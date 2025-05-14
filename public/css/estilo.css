@@ -4,13 +4,16 @@ body,
   padding: 0;
 }
 
+/* index page */
+
 .container_index {
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-image: url('../assets/imgs/Ring.png');
-  background-position: center;
+   background-image: linear-gradient(180deg,rgba(0, 0, 0, 0)0%,rgba(0, 0, 0, 0.600)100%), url('../assets/imgs/Ring.png'); 
+  background-position: center;  
   flex-direction: column;
+  
 }
 
 .navbar_index {
@@ -26,32 +29,35 @@ body,
   width: auto;
 }
 
-.buttons_navbar {
+.buttons_navbar_index {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
-  width: 20vw;
-  height: 16vh;
+  width: 25vw;
+  height: 18vh;
 
 }
 
 .button_index {
   display: flex;
-  align-items: center;
+  align-items: center;  
   justify-content: center;
   border-style: none;
-  width: 8vw;
-  height: 5vh;
+  width: 10vw;
+  height: 7vh;
   border-radius: 15px;
   transition: 0.3s ease-in-out;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 23px;
   text-decoration: none;
+
 }
 
 .btn_login {
   background-color: rgb(1, 1, 150);
   color: white;
+  box-shadow: 4px 4px 8px rgb(0, 47, 255);
 }
 
 .btn_login:hover {
@@ -62,6 +68,7 @@ body,
 .btn_cadastro {
   background-color: rgb(175, 0, 0);
   color: white;
+  box-shadow: 4px 4px 8px rgb(255, 0, 0);
 }
 
 .btn_cadastro:hover {
@@ -87,13 +94,19 @@ body,
   justify-content: space-between;
 }
 
-.text_title {
+.text_title_index {
   font-size: 60px;
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
+.text_desc_index {
+    font-family: "Share Tech", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size:30px;
+}
 /* .btn_content {
   border-style: none;
   border-radius: 15px;
@@ -126,20 +139,6 @@ body,
   text-align: center;
 }
 
-.btn_content::after {
-  pointer-events: none;
-  content: "";
-  position: absolute;
-  top: 120%;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: var(--glow-spread-color); 
-  filter: blur(2em);
-  opacity: .7;
-  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
-}
-
 .btn_content:hover {
   color: var(--btn-color);
   background-color: var(--glow-color);
@@ -153,6 +152,8 @@ body,
     0 0 2.5em 2em var(--glow-spread-color),
     inset 0 0 .5em .25em var(--glow-color);
 }
+
+/* login page */
 
 .container_login{
   background-image: url('../assets/imgs/Izzy\ gradient.png');
@@ -238,13 +239,14 @@ justify-content: center;
  }
  
  .btn_login_page{
-  width: 17.6vw;
+  width: 18.5vw;
   height: 6vh;
   border-radius: 20px;
   border-style: none;
   background-color: rgb(1, 1, 150);
   color: white;
   transition: 0.3s ease-in-out;
+    box-shadow: 4px 4px 8px rgb(0, 47, 255);
 }
 
 .btn_login_page:hover {
@@ -252,6 +254,7 @@ justify-content: center;
   transform: scale(1.1);
 }
   
+/* cadastro_page */
 
 .container_cadastro{  
   background-image: url('../assets/imgs/Poatan\ gradient.png');
@@ -263,7 +266,6 @@ justify-content: center;
   background-size: cover;
   flex-direction: row;
   justify-content: end;
-  
 }
 
 .cadastro_right_side{
@@ -275,24 +277,24 @@ justify-content: center;
 
 .content_right_side{
   width: 65%;
-  height: 55vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-
-  justify-content: space-around;
+  justify-content: space-evenly;
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   margin-left: 300px;
 }
 
 .btn_cadastro_page{
-  width: 17.6vw;
+  width: 18.3vw;
   height: 6vh;
   border-radius: 20px;
   border-style: none;
   background-color: rgb(175, 0, 0);
   color:white;
   transition: 0.3s ease-in-out;
+  box-shadow: 4px 4px 8px rgb(255, 0, 0);
 }
 .btn_cadastro_page:hover {
   background-color: rgb(120, 0, 0);
