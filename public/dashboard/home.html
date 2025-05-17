@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Info Strike - Home</title>
-    <link rel="icon" href="./assets/imgs/logo small.png">
+    <link rel="icon" href="../assets/imgs/logo small.png">
     <link rel="stylesheet" href="../css/estilo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,66 +29,272 @@
                 <a href="assistir.html">Assistir</a>
             </div>
             <div class="buttons_navbar">
-                <a class="btn_exit" href="../index.html"> <img src="../assets/imgs/arrow-left-svgrepo-com.svg" alt="" ></a>
+                <a class="btn_exit" href="../index.html"> <img src="../assets/imgs/arrow-left-svgrepo-com.svg"
+                        alt=""></a>
             </div>
         </div>
-        <div class="img_home">
-                <div class="card">
-                    <div data-status="inprogress" class="teams">
-                        <span class="team_info team_home">
-                            <span class="team_info_container">
-                                <span class="team_name_info">Player 1</span>
-                            </span>
-                        </span>
-                        <span class="event_scoreboard">
-                            <span class="event_score_container">
-                                <span class="current_time_container">
-                                    <span class="event_current_time">
-                                        <span class="event_clock">85'</span>
-                                        <span class="current_part">2H</span>
-                                    </span>
-                                    <span class="progress_dots" data-progress="1S">
-                                        <span class="load"></span>
-                                    </span>
-                                </span>
-                                <span class="score_container">
-                                    <span class="score_home">2</span>
-                                    <span class="custom_sep">-</span>
-                                    <span class="score_away">4</span>
+            <script>
+                window.addEventListener('scroll', () => {
+                    const navbar = document.querySelector('.navbar');
+                    const placar = document.querySelector('.scoreboard .card');
+
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                        placar.classList.add('show_on_scroll');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                        placar.classList.remove('show_on_scroll');
+                    }
+                });
+            </script>
+            <div class="scoreboard">
+                <div class="card hidden_on_top">
+                    <div class="card">
+                        <div data-status="inprogress" class="teams">
+                            <span class="team_info team_home">
+                                <span class="team_info_container">
+                                    <span class="team_name_info">Fulano</span>
                                 </span>
                             </span>
-                        </span>
-                        <span class="team_info team_away">
-                            <span class="team_info_container">
-                                <span class="team_icon_container"></span>
-                                <span class="team_name_info">Player 2</span>
+                            <span class="event_scoreboard">
+                                <span class="event_score_container">
+                                    <span class="current_time_container">
+                                        <span class="event_current_time">
+                                            <span class="event_clock">3:42</span>
+                                            <span class="current_part">3rd Round</span>
+                                        </span>
+                                        <span class="progress_dots" data-progress="1S">
+                                            <span class="load"></span>
+                                        </span>
+                                    </span>
+                                    <span class="score_container">
+                                        <span class="score_home">1</span>
+                                        <span class="custom_sep">-</span>
+                                        <span class="score_away">1</span>
+                                    </span>
+                                </span>
                             </span>
-                        </span>
+                            <span class="team_info team_away">
+                                <span class="team_info_container">
+                                    <span class="team_icon_container"></span>
+                                    <span class="team_name_info">Ciclano</span>
+                                </span>
+                            </span>
+                        </div>
                     </div>
                 </div>
-
-
-            <p class="text_home_title">Bem Vindo</p>
-        </div>
-        <div class="cards_home">
-            <div class="group_cards_home">
-                <h2>Por que Praticar Artes Marciais?</h2>
-
-                <div class="cards_content">
-
-                </div>
-                <div class="cards_content">
-
-                </div>
-                <div class="cards_content">
-
-                </div>
             </div>
-            <div class="img_home_content">
-
+        <div class="img_home">
+            <div class="content_title_home">
+                <p class="text_home_title">Bem Vindo!</p>
+                <p class="text_home_desc">Prepare-se para uma nova jornada.</p>
             </div>
         </div>
     </div>
+    <div class="cards_home">
+        <div class="group_cards_home">
+
+
+            <!-- CARD 1 -->
+            <div class="cards_content">
+                <div class="cybercard_container">
+                    <div class="cybercard_canvas">
+                        <!-- 25 trackers -->
+                        <div class="cybercard_tracker tr_1"></div>
+                        <div class="cybercard_tracker tr_2"></div>
+                        <div class="cybercard_tracker tr_3"></div>
+                        <div class="cybercard_tracker tr_4"></div>
+                        <div class="cybercard_tracker tr_5"></div>
+                        <div class="cybercard_tracker tr_6"></div>
+                        <div class="cybercard_tracker tr_7"></div>
+                        <div class="cybercard_tracker tr_8"></div>
+                        <div class="cybercard_tracker tr_9"></div>
+                        <div class="cybercard_tracker tr_10"></div>
+                        <div class="cybercard_tracker tr_11"></div>
+                        <div class="cybercard_tracker tr_12"></div>
+                        <div class="cybercard_tracker tr_13"></div>
+                        <div class="cybercard_tracker tr_14"></div>
+                        <div class="cybercard_tracker tr_15"></div>
+                        <div class="cybercard_tracker tr_16"></div>
+                        <div class="cybercard_tracker tr_17"></div>
+                        <div class="cybercard_tracker tr_18"></div>
+                        <div class="cybercard_tracker tr_19"></div>
+                        <div class="cybercard_tracker tr_20"></div>
+                        <div class="cybercard_tracker tr_21"></div>
+                        <div class="cybercard_tracker tr_22"></div>
+                        <div class="cybercard_tracker tr_23"></div>
+                        <div class="cybercard_tracker tr_24"></div>
+                        <div class="cybercard_tracker tr_25"></div>
+
+                        <!-- Card -->
+                        <div id="cybercard_card">
+                            <div class="cybercard_glare"></div>
+                            <div class="cybercard_glow_wrap">
+                                <div class="cybercard_glow"></div>
+                                <div class="cybercard_glow"></div>
+                                <div class="cybercard_glow"></div>
+                            </div>
+                            <div class="cybercard_particles">
+                                <div class="cybercard_particle" style="top:10%; left:20%;"></div>
+                                <div class="cybercard_particle" style="top:50%; left:80%;"></div>
+                                <div class="cybercard_particle" style="top:70%; left:30%;"></div>
+                            </div>
+                            <div class="cybercard_corners">
+                                <div class="cybercard_corner tl"></div>
+                                <div class="cybercard_corner tr"></div>
+                                <div class="cybercard_corner bl"></div>
+                                <div class="cybercard_corner br"></div>
+                            </div>
+                            <div class="cybercard_title">Desenvolvimento Pessoal</div>
+                            <div class="cybercard_subtitle">Por incrível que pareça, lutar te faz ser uma pessoa mais
+                                calma, estratégica, que sabe agir bem sob pressão. Enquanto te ensina a estar
+                                confortável em situações disconfortáveis</div>
+                            <div class="cybercard_lines">
+                                <div class="cybercard_line"></div>
+                                <div class="cybercard_line"></div>
+                                <div class="cybercard_line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="cards_content">
+                <div class="cybercard_container">
+                    <div class="cybercard_canvas">
+                        <!-- 25 trackers -->
+                        <div class="cybercard_tracker tr_1"></div>
+                        <div class="cybercard_tracker tr_2"></div>
+                        <div class="cybercard_tracker tr_3"></div>
+                        <div class="cybercard_tracker tr_4"></div>
+                        <div class="cybercard_tracker tr_5"></div>
+                        <div class="cybercard_tracker tr_6"></div>
+                        <div class="cybercard_tracker tr_7"></div>
+                        <div class="cybercard_tracker tr_8"></div>
+                        <div class="cybercard_tracker tr_9"></div>
+                        <div class="cybercard_tracker tr_10"></div>
+                        <div class="cybercard_tracker tr_11"></div>
+                        <div class="cybercard_tracker tr_12"></div>
+                        <div class="cybercard_tracker tr_13"></div>
+                        <div class="cybercard_tracker tr_14"></div>
+                        <div class="cybercard_tracker tr_15"></div>
+                        <div class="cybercard_tracker tr_16"></div>
+                        <div class="cybercard_tracker tr_17"></div>
+                        <div class="cybercard_tracker tr_18"></div>
+                        <div class="cybercard_tracker tr_19"></div>
+                        <div class="cybercard_tracker tr_20"></div>
+                        <div class="cybercard_tracker tr_21"></div>
+                        <div class="cybercard_tracker tr_22"></div>
+                        <div class="cybercard_tracker tr_23"></div>
+                        <div class="cybercard_tracker tr_24"></div>
+                        <div class="cybercard_tracker tr_25"></div>
+
+                        <!-- CARD -->
+                        <div id="cybercard_card">
+                            <div class="cybercard_glare"></div>
+                            <div class="cybercard_glow_wrap">
+                                <div class="cybercard_glow"></div>
+                                <div class="cybercard_glow"></div>
+                                <div class="cybercard_glow"></div>
+                            </div>
+                            <div class="cybercard_particles">
+                                <div class="cybercard_particle" style="top:10%; left:20%;"></div>
+                                <div class="cybercard_particle" style="top:50%; left:80%;"></div>
+                                <div class="cybercard_particle" style="top:70%; left:30%;"></div>
+                            </div>
+                            <div class="cybercard_corners">
+                                <div class="cybercard_corner tl"></div>
+                                <div class="cybercard_corner tr"></div>
+                                <div class="cybercard_corner bl"></div>
+                                <div class="cybercard_corner br"></div>
+                            </div>
+                            <div class="cybercard_title">Saúde Mental</div>
+                            <div class="cybercard_subtitle">Desenvolve sua parte motora, cognitiva, emocional e
+                                comportamental.
+                                Lutar serve como uma válvula de escape para o estresse do dia a dia, além de desenvolver
+                                seus reflexos e coordenação motora.
+                            </div>
+                            <div class="cybercard_lines">
+                                <div class="cybercard_line"></div>
+                                <div class="cybercard_line"></div>
+                                <div class="cybercard_line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="cards_content">
+                <div class="cybercard_container">
+                    <div class="cybercard_canvas">
+                        <!-- 25 trackers -->
+                        <div class="cybercard_tracker tr_1"></div>
+                        <div class="cybercard_tracker tr_2"></div>
+                        <div class="cybercard_tracker tr_3"></div>
+                        <div class="cybercard_tracker tr_4"></div>
+                        <div class="cybercard_tracker tr_5"></div>
+                        <div class="cybercard_tracker tr_6"></div>
+                        <div class="cybercard_tracker tr_7"></div>
+                        <div class="cybercard_tracker tr_8"></div>
+                        <div class="cybercard_tracker tr_9"></div>
+                        <div class="cybercard_tracker tr_10"></div>
+                        <div class="cybercard_tracker tr_11"></div>
+                        <div class="cybercard_tracker tr_12"></div>
+                        <div class="cybercard_tracker tr_13"></div>
+                        <div class="cybercard_tracker tr_14"></div>
+                        <div class="cybercard_tracker tr_15"></div>
+                        <div class="cybercard_tracker tr_16"></div>
+                        <div class="cybercard_tracker tr_17"></div>
+                        <div class="cybercard_tracker tr_18"></div>
+                        <div class="cybercard_tracker tr_19"></div>
+                        <div class="cybercard_tracker tr_20"></div>
+                        <div class="cybercard_tracker tr_21"></div>
+                        <div class="cybercard_tracker tr_22"></div>
+                        <div class="cybercard_tracker tr_23"></div>
+                        <div class="cybercard_tracker tr_24"></div>
+                        <div class="cybercard_tracker tr_25"></div>
+
+                        <!-- Card -->
+                        <div id="cybercard_card">
+                            <div class="cybercard_glare"></div>
+                            <div class="cybercard_glow_wrap">
+                                <div class="cybercard_glow"></div>
+                                <div class="cybercard_glow"></div>
+                                <div class="cybercard_glow"></div>
+                            </div>
+                            <div class="cybercard_particles">
+                                <div class="cybercard_particle" style="top:10%; left:20%;"></div>
+                                <div class="cybercard_particle" style="top:50%; left:80%;"></div>
+                                <div class="cybercard_particle" style="top:70%; left:30%;"></div>
+                            </div>
+                            <div class="cybercard_corners">
+                                <div class="cybercard_corner tl"></div>
+                                <div class="cybercard_corner tr"></div>
+                                <div class="cybercard_corner bl"></div>
+                                <div class="cybercard_corner br"></div>
+                            </div>
+                            <div class="cybercard_title">Saúde do corpo</div>
+                            <div class="cybercard_subtitle">Luta é uma das melhores atividades físicas para tornar seu
+                                corpo saudável, forte, resistente e flexível</div>
+                            <div class="cybercard_lines">
+                                <div class="cybercard_line"></div>
+                                <div class="cybercard_line"></div>
+                                <div class="cybercard_line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text_home_content">
+                <h2>Por que praticar artes marciais?</h2>
+                <img src="../assets/training.gif" alt="giphy.com">
+            </div>
+        </div>
+
+
 </body>
 
 </html>
