@@ -1156,6 +1156,7 @@ input:valid~label {
 .footer_name {
   color: white;
   margin-bottom: 0.25rem;
+  font-family: "share tech", sans-serif;
 }
 
 .footer_email {
@@ -1164,6 +1165,7 @@ input:valid~label {
   position: relative;
   text-decoration: none;
   transition: 0.3s;
+  font-family: "share tech", sans-serif;
 }
 
 .footer_name:hover {
