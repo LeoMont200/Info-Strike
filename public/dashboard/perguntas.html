@@ -1,233 +1,214 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Quiz: Qual Arte Marcial é Ideal para Você?</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      width: 80%;
-      max-width: 600px;
-      margin: 50px auto;
-      background: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .question {
-      font-size: 1.2em;
-      margin-bottom: 20px;
-    }
-    .option {
-      margin: 10px 0;
-    }
-    .option input {
-      margin-right: 10px;
-    }
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 1em;
-      background: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-    .result {
-      font-weight: bold;
-      font-size: 1.3em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title> Quiz - Info-Strike</title>
+    <link rel="icon" href="../assets/imgs/logo small.png">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-  <div class="container" id="quizContainer">
-    <!-- Perguntas serão renderizadas aqui -->
-  </div>
+    <div class="container_perg_back">
+        <div class="container_perg" id="container_perg">
 
-  <script>
-    const questions = [
-      {
-        text: "Qual tipo de combate mais te atrai?",
-        options: [
-          { label: "Golpes com os punhos (Boxe)", value: 10 },
-          { label: "Combinações com joelhos e cotovelos (Muay Thai)", value: 30 },
-          { label: "Chutes altos e giros (Taekwondo)", value: 50 },
-          { label: "Postura e golpes com a mão aberta (Karatê)", value: 60 },
-          { label: "Técnicas de queda e controle (Judô)", value: 80 },
-          { label: "Imobilizações e finalizações no chão (BJJ)", value: 90 },
-          { label: "Domínio físico por força e controle (Wrestling)", value: 100 }
-        ]
-      },
-      {
-        text: "Qual distância de combate você prefere?",
-        options: [
-          { label: "Curta, corpo a corpo (Boxe, Wrestling)", value: 10 },
-          { label: "Média, para clinch e joelhadas (Muay Thai)", value: 30 },
-          { label: "Longa, com chutes (Taekwondo)", value: 70 },
-          { label: "Média-longa, com esquiva e técnica (Karatê)", value: 60 },
-          { label: "Curtíssima, com quedas (Judô)", value: 40 },
-          { label: "Corpo a corpo total, no chão (BJJ)", value: 20 }
-        ]
-      },
-      {
-        text: "O que mais importa para você em uma luta?",
-        options: [
-          { label: "Derrubar e controlar (Judô, Wrestling)", value: 90 },
-          { label: "Finalizar e ser eficiente (BJJ)", value: 80 },
-          { label: "Golpear com potência (Boxe, Muay Thai)", value: 30 },
-          { label: "Pontuar com golpes limpos (Taekwondo)", value: 60 },
-          { label: "Técnica e respeito à tradição (Karatê)", value: 50 }
-        ]
-      },
-      {
-        text: "Você prefere uma arte marcial mais...",
-        options: [
-          { label: "Prática e realista (Wrestling, BJJ)", value: 90 },
-          { label: "Com espírito e disciplina (Karatê, Taekwondo)", value: 40 },
-          { label: "Agressiva e direta (Muay Thai, Boxe)", value: 60 },
-          { label: "Equilibrada e com propósito (Judô)", value: 70 }
-        ]
-      },
-      {
-        text: "Qual sua preferência física?",
-        options: [
-          { label: "Gosto de agilidade e explosão (Taekwondo, Muay Thai)", value: 50 },
-          { label: "Gosto de resistência e trocação (Boxe, Muay Thai)", value: 30 },
-          { label: "Gosto de controle e firmeza (Judô, Wrestling)", value: 80 },
-          { label: "Gosto de precisão e calma (BJJ, Karatê)", value: 60 }
-        ]
-      },
-      {
-        text: "Como você lida com o contato físico intenso?",
-        options: [
-          { label: "Prefiro manter distância (Taekwondo)", value: 10 },
-          { label: "Contato leve e controlado (Karatê)", value: 20 },
-          { label: "Trocação direta com os punhos (Boxe)", value: 40 },
-          { label: "Uso de joelhos, cotovelos (Muay Thai)", value: 60 },
-          { label: "Derrubadas e pegadas (Judô)", value: 75 },
-          { label: "Jiu-jitsu no chão (BJJ)", value: 90 },
-          { label: "Pressão física intensa (Wrestling)", value: 100 }
-        ]
-      },
-      {
-        text: "Qual estilo de aprendizado te atrai mais?",
-        options: [
-          { label: "Tradições e regras rígidas (Karatê)", value: 10 },
-          { label: "Graduações e formas (Taekwondo)", value: 20 },
-          { label: "Repetição técnica (Judô)", value: 40 },
-          { label: "Treino livre com ajustes (Boxe)", value: 60 },
-          { label: "Variações e improviso (Muay Thai)", value: 70 },
-          { label: "Caos e adaptação (BJJ)", value: 90 },
-          { label: "Funcional e direto (Wrestling)", value: 100 }
-        ]
-      },
-      {
-        text: "O que você espera aprender com uma arte marcial?",
-        options: [
-          { label: "Autocontrole e filosofia (Karatê)", value: 10 },
-          { label: "Foco e disciplina (Taekwondo)", value: 20 },
-          { label: "Técnica e equilíbrio (Judô)", value: 40 },
-          { label: "Resistência e ritmo (Boxe)", value: 60 },
-          { label: "Aplicabilidade real (Muay Thai)", value: 70 },
-          { label: "Estratégia e controle (BJJ)", value: 85 },
-          { label: "Domínio físico (Wrestling)", value: 100 }
-        ]
-      },
-      {
-        text: "Você se vê mais lutando...",
-        options: [
-          { label: "Com chutes à distância (Taekwondo)", value: 10 },
-          { label: "Com socos diretos (Boxe)", value: 30 },
-          { label: "Com joelhos e cotovelos (Muay Thai)", value: 50 },
-          { label: "Desequilibrando e projetando (Judô)", value: 70 },
-          { label: "Finalizando no chão (BJJ)", value: 90 },
-          { label: "Esmagando com o corpo (Wrestling)", value: 100 },
-          { label: "Equilibrado entre pé e solo (Karatê)", value: 60 }
-        ]
-      },
-      {
-        text: "Como você lida com frustração e aprendizado?",
-        options: [
-          { label: "Quero ver resultado logo (Taekwondo)", value: 20 },
-          { label: "Evolução gradual (Karatê)", value: 30 },
-          { label: "Frustração técnica (Boxe)", value: 50 },
-          { label: "Aceito dor como parte (Muay Thai)", value: 60 },
-          { label: "Aprendo com quedas (Judô)", value: 70 },
-          { label: "Aprendo sendo finalizado (BJJ)", value: 90 },
-          { label: "Adoro desafios físicos (Wrestling)", value: 100 }
-        ]
-      }
-    ];
+            <script>
+                const perguntas = [
+                    {
+                        text: "1.Qual estilo de combate mais te atrai?",
+                        options: [
+                            { label: "Socos que parecem tiros de canhão com jogo de pés estratégico", value: 10 },
+                            { label: "Socos, chutes, cotoveladas e joelhadas. Te fazendo se tornar uma arma viva", value: 30 },
+                            { label: "Golpes rápidos e elegantes, sem dar oportunidade do oponente entender o que está acontecendo", value: 60 },
+                            { label: "Técnicas para derrubar e desequilibrar e arremessar o oponente. Sendo capaz de fazer o oponente voar com seus arremessos", value: 80 },
+                            { label: "Imobilizar e finalizar no chão como uma cobra caçando sua presa", value: 90 },
+                            { label: "Arremessar, esmagar e imobilizar seu oponente, dominando a luta", value: 100 }
+                        ]
+                    },
+                    {
+                        text: "2.Qual distância de combate você prefere?",
+                        options: [
+                            { label: "Curta, muito contato ", value: 10 },
+                            { label: "Média, podendo usar socos e chutes, mas usando clinch, cotoveladas e joelhadas quandoa distância encurtar ", value: 30 },
+                            { label: "Longa, com chutes", value: 70 },
+                            { label: "Média-longa, com esquivas e golpes rápidos", value: 60 },
+                            { label: "Média-curta, com quedas", value: 40 },
+                            { label: "Curtíssima, no chão", value: 20 }
+                        ]
+                    },
+                    {
+                        text: "3.O que mais importa para você em uma luta?",
+                        options: [
+                            { label: "Derrubar e controlar", value: 90 },
+                            { label: "Finalizar e ser eficiente", value: 80 },
+                            { label: "Golpear com potência", value: 30 },
+                            { label: "Golpes preciso e limpos", value: 60 },
+                            { label: "Técnica e respeito à tradição", value: 50 }
+                        ]
+                    },
+                    {
+                        text: "4.Você prefere uma arte marcial mais...",
+                        options: [
+                            { label: "Prática e realista", value: 90 },
+                            { label: "Com tradição e disciplina", value: 40 },
+                            { label: "Agressiva e direta ao ponto", value: 60 },
+                            { label: "Equilibrada e defensiva", value: 70 }
+                        ]
+                    },
+                    {
+                        text: "5.O que você valoriza em uma arte marcial?",
+                        options: [
+                            { label: "Tradição e filosofia", value: 40 },
+                            { label: "Eficiência em combate", value: 90 },
+                            { label: "Disciplina física e mental", value: 60 },
+                            { label: "Praticidade para defesa pessoal", value: 80 }
+                        ]
+                    },
+                    {
+                        text: "6.Como você prefere vencer uma luta?",
+                        options: [
+                            { label: "Nocauteando o oponente", value: 20 },
+                            { label: "Controlando até a imobilização", value: 70 },
+                            { label: "Ganhar sem sofrer um arranhão", value: 50 },
+                            { label: "Finalizando o oponente com um enforcamento ou chave de braço", value: 90 }
+                        ]
+                    },
+                    {
+                        text: "7.Qual estilo de aprendizado te atrai mais?",
+                        options: [
+                            { label: "Tradições, disciplina e regras rígidas ", value: 20 },
+                            { label: "Repetição de técnica", value: 40 },
+                            { label: "Treino com poucos ajustes", value: 60 },
+                            { label: "Treino com mais variações e com alguns improvisos", value: 70 },
+                            { label: "Treino totalmente livre e improvisado", value: 90 },
+                            { label: "Funcional e direto, sem floreios", value: 100 }
+                        ]
+                    },
+                    {
+                        text: "8.O que você espera aprender com uma arte marcial?",
+                        options: [
+                            { label: "Autocontrole e paz interna", value: 10 },
+                            { label: "Foco e disciplina", value: 20 },
+                            { label: "Técnica e equilíbrio", value: 40 },
+                            { label: "Resistência e ritmo", value: 60 },
+                            { label: "Aplicabilidade real", value: 70 },
+                            { label: "Estratégia e controle", value: 85 },
+                            { label: "Força e dominancia física", value: 100 }
+                        ]
+                    },
+                    {
+                        text: "9.Em que tipo de golpe você quer se especializar?",
+                        options: [
+                            { label: "Chutes poderosos e certeiros", value: 10 },
+                            { label: "Socos bem dados", value: 30 },
+                            { label: "Quero ficar bom com todo e qualquer tipo de golpe de trocação", value: 50 },
+                            { label: "Arremessos e rasteiras", value: 70 },
+                            { label: "Imobilizações e finalizações", value: 90 },
+                            { label: "Imobilizações e arremessos", value: 100 },
+                            { label: "Socos e chutes rápidos invés de fortes", value: 60 }
+                        ]
+                    },
+                    {
+                        
+                        text: "10. Em que tipo de ambiente você se sente mais motivado para treinar?",
+                        options: [
+                            { label: "Com metas claras e progresso rápido", value: 20 },
+                            { label: "Ambiente calmo e disciplinado, com foco técnico", value: 30 },
+                            { label: "Dinâmico, com desafios técnicos constantes", value: 50 },
+                            { label: "Treinos intensos e exigentes, com clima de superação ", value: 60 },
+                            { label: "Aulas estruturadas com foco em técnica e repetição", value: 70 },
+                            { label: "Espaço colaborativo, onde se aprende errando e corrigindo ", value: 90 },
+                            { label: "Ambiente competitivo, onde todos se empurram ao limite", value: 100 }
+                        ]
+                    }
+                    
+                ];
 
-    const styles = {
-      "Boxe":      [10,10,30,60,30,40,40,60,60,50],
-      "Muay Thai": [30,30,30,60,50,60,60,70,70,60],
-      "Taekwondo": [50,70,60,40,50,10,10,20,20,20],
-      "Karatê":    [60,60,50,40,60,20,20,10,10,30],
-      "Judô":      [80,40,90,70,80,70,75,40,40,70],
-      "BJJ":       [90,20,80,90,60,90,90,85,90,90],
-      "Wrestling": [100,10,90,90,80,100,100,100,100,100]
-    };
+                const estilos = {
+                    "Boxe": [10, 10, 30, 60, 30, 40, 40, 60, 60, 50],
+                    "Muay Thai": [30, 30, 30, 60, 50, 60, 60, 70, 70, 60],
+                    "Taekwondo": [50, 70, 60, 40, 50, 10, 20, 20, 20, 20],
+                    "Karatê": [60, 60, 50, 40, 60, 20, 20, 10, 10, 30],
+                    "Judô": [80, 40, 90, 70, 80, 70, 75, 40, 40, 70],
+                    "Jiu-Jitsu Brasileiro (BJJ)": [90, 20, 80, 90, 60, 90, 90, 85, 90, 90],
+                    "Wrestling": [100, 10, 90, 90, 80, 100, 100, 100, 100, 100]
+                };
 
-    let currentQuestion = 0;
-    const userAnswers = [];
+                let perguntaAtual = 0;
+                const respostas = [];
 
-    function renderQuestion() {
-      const q = questions[currentQuestion];
-      const container = document.getElementById("quizContainer");
-      container.innerHTML = `
-        <div class="question">${q.text}</div>
-        ${q.options.map((opt, i) => `
-          <div class="option">
-            <label>
-              <input type="radio" name="option" value="${opt.value}">
-              ${opt.label}
-            </label>
-          </div>`).join("")}
-        <button onclick="next()">Próxima</button>
-      `;
-    }
+                function exibirPerguntas() {
+                    const perg = perguntas[perguntaAtual];
+                    const container = document.getElementById("container_perg");
+                    let conteudo = `<div class="perg">${perg.text}</div>`;
 
-    function next() {
-      const selected = document.querySelector("input[name='option']:checked");
-      if (!selected) {
-        alert("Por favor, selecione uma opção.");
-        return;
-      }
-      userAnswers.push(parseInt(selected.value));
-      currentQuestion++;
-      if (currentQuestion < questions.length) {
-        renderQuestion();
-      } else {
-        showResult();
-      }
-    }
+                    for (let i = 0; i < perg.options.length; i++) {
+                        const opt = perg.options[i];
+                        conteudo += `
+                            <div class="option">
+                                <label>
+                                    <input type="radio" name="option" value="${opt.value}">
+                                    ${opt.label}
+                                </label>
+                            </div>
+                        `;
+                    }
 
-    function showResult() {
-      const resultVector = userAnswers;
-      let bestMatch = null;
-      let bestDistance = Infinity;
+                    conteudo += `<button onclick="proxima()">Próxima</button>`;
+                    container.innerHTML = conteudo;
+                }
 
-      for (const [style, vector] of Object.entries(styles)) {
-        const distance = Math.sqrt(vector.reduce((sum, val, i) =>
-          sum + Math.pow(val - resultVector[i], 2), 0));
-        if (distance < bestDistance) {
-          bestDistance = distance;
-          bestMatch = style;
-        }
-      }
+                function proxima() {
+                    const selecionado = document.querySelector("input[name='option']:checked");
+                    if (!selecionado) {
+                        alert("Por favor, selecione uma opção para continuar.");
+                        return;
+                    }
+                    respostas.push(parseInt(selecionado.value));
+                    perguntaAtual++;
+                    if (perguntaAtual < perguntas.length) {
+                        exibirPerguntas();
+                    } else {
+                        mostrarResultado();
+                    }
+                }
 
-      document.getElementById("quizContainer").innerHTML = `
-        <div class="result">A arte marcial ideal para você é: <strong>${bestMatch}</strong>!</div>
-      `;
-    }
+                function mostrarResultado() {
+                    const vt_result = respostas;
+                    let melhorEstilo = null;
+                    let menorDistancia = Infinity;
 
-    renderQuestion();
-  </script>
+                    for (const [estilo, vetor] of Object.entries(estilos)) {
+                        let distancia = 0;
+                        for (let i = 0; i < vetor.length; i++) {
+                            const diferenca = vetor[i] - vt_result[i];
+                            distancia += diferenca * diferenca;
+                        }
+
+                        if (distancia < menorDistancia) {
+                            menorDistancia = distancia;
+                            melhorEstilo = estilo;
+                        }
+                    }
+
+                    document.getElementById("container_perg").innerHTML = `
+                    <div class="result">A arte marcial que mais combina com você é: <strong>${melhorEstilo}</strong>!</div>
+                    `;
+                }
+
+
+                exibirPerguntas();
+            </script>
+        </div>
+    </div>
 </body>
+
+
 </html>

@@ -135,8 +135,8 @@ html {
   border-radius: 1em;
   outline: none;
   box-shadow: 0 0 1em .25em var(--glow-color),
-  0 0 4em 1em var(--glow-spread-color),
-  inset 0 0 .75em .25em var(--glow-color);
+    0 0 4em 1em var(--glow-spread-color),
+    inset 0 0 .75em .25em var(--glow-color);
   text-shadow: 0 0 .5em var(--glow-color);
   position: relative;
   transition: all 0.3s;
@@ -149,14 +149,14 @@ html {
   color: var(--btn-color);
   background-color: var(--glow-color);
   box-shadow: 0 0 1em .25em var(--glow-color),
-  0 0 4em 2em var(--glow-spread-color),
-  inset 0 0 .75em .25em var(--glow-color);
+    0 0 4em 2em var(--glow-spread-color),
+    inset 0 0 .75em .25em var(--glow-color);
 }
 
 .btn_content:active {
   box-shadow: 0 0 0.6em .25em var(--glow-color),
-  0 0 2.5em 2em var(--glow-spread-color),
-  inset 0 0 .5em .25em var(--glow-color);
+    0 0 2.5em 2em var(--glow-spread-color),
+    inset 0 0 .5em .25em var(--glow-color);
 }
 
 /* login page */
@@ -1012,21 +1012,27 @@ input:valid~label {
 .tr_4:hover~#cybercard_card {
   transform: rotateX(20deg) rotateY(5deg);
 }
+
 .tr_5:hover~#cybercard_card {
   transform: rotateX(20deg) rotateY(10deg);
 }
+
 .tr_6:hover~#cybercard_card {
   transform: rotateX(10deg) rotateY(-10deg);
 }
+
 .tr_7:hover~#cybercard_card {
   transform: rotateX(10deg) rotateY(-5deg);
 }
+
 .tr_8:hover~#cybercard_card {
   transform: rotateX(10deg) rotateY(0deg);
 }
+
 .tr_9:hover~#cybercard_card {
   transform: rotateX(10deg) rotateY(5deg);
 }
+
 .tr_10:hover~#cybercard_card {
   transform: rotateX(10deg) rotateY(10deg);
 }
@@ -1274,22 +1280,23 @@ input:valid~label {
   font-family: "bebas neue", sans-serif;
   font-size: 40px;
   color: white;
-  background-position:center;
+  background-position: center;
   background-repeat: no-repeat;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  
+
   z-index: 1;
 
 }
-.sobre_content{
+
+.sobre_content {
   height: 600vh;
   width: 100%;
   display: flex;
   flex-direction: row;
-    background: linear-gradient(135deg, #111, #1a1a1a);
+  background: linear-gradient(135deg, #111, #1a1a1a);
   border-top: 1px solid #333;
   box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.5);
   position: relative;
@@ -1310,6 +1317,7 @@ input:valid~label {
   background: linear-gradient(90deg, transparent, var(--glow-color), transparent);
   animation: sobre_scan 20s linear infinite;
 }
+
 @keyframes sobre_scan {
   0% {
     transform: translateY(0);
@@ -1351,7 +1359,7 @@ input:valid~label {
   z-index: 2;
 }
 
-.sobre_text p{
+.sobre_text p {
   margin-top: 30px;
   margin-left: 20px;
   margin-right: 20px;
@@ -1361,22 +1369,23 @@ input:valid~label {
   line-height: 5vh;
   text-align: justify;
 }
-.sobre_text h2{
+
+.sobre_text h2 {
   margin-top: 20px;
   margin-left: 10px;
   color: white;
   font-family: "bebas neue", sans-serif;
   font-size: 40px;
-  
+
 }
 
-.sobre_text h1{
+.sobre_text h1 {
   margin-top: 20px;
   margin-left: 10px;
   color: white;
   font-family: "bebas neue", sans-serif;
   font-size: 40px;
-  
+
 }
 
 .sobre_content_right {
@@ -1388,7 +1397,7 @@ input:valid~label {
   z-index: 2;
 }
 
-.sobre_img1{
+.sobre_img1 {
   margin-top: 10vh;
   margin-left: 10vh;
   background-image: url("../assets/imgs/Icon_DIB-301021-10-06-1140x570.jpg");
@@ -1400,34 +1409,34 @@ input:valid~label {
   --glow-spread-color: rgba(50, 32, 212, 0.781);
   --enhanced-glow-color: rgb(211, 206, 255);
   box-shadow: 0 0 1em .20em var(--glow-color),
-  0 0 3em .5em var(--glow-spread-color),
-  inset 0 0 .70em .20em var(--glow-color);
+    0 0 3em .5em var(--glow-spread-color),
+    inset 0 0 .70em .20em var(--glow-color);
   text-shadow: 0 0 .15em var(--glow-color);
 }
 
-.container_video{
-  font-family: "bebas neue",sans-serif;
+.container_video {
+  font-family: "bebas neue", sans-serif;
   font-size: 30px;
   color: white;
   justify-items: center;
 }
 
 
-.container_video iframe{
+.container_video iframe {
   display: flex;
   border-radius: 30px;
   --glow-color: rgb(197, 31, 31);
   --glow-spread-color: rgba(50, 32, 212, 0.781);
   --enhanced-glow-color: rgb(211, 206, 255);
   box-shadow: 0 0 1em .20em var(--glow-color),
-  0 0 3em .5em var(--glow-spread-color),
-  inset 0 0 .70em .20em var(--glow-color);
+    0 0 3em .5em var(--glow-spread-color),
+    inset 0 0 .70em .20em var(--glow-color);
   text-shadow: 0 0 .15em var(--glow-color);
 }
 
 /*quiz page*/
 
-.container_quiz_cards{
+.container_quiz_cards {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -1451,6 +1460,7 @@ input:valid~label {
   background: linear-gradient(90deg, transparent, var(--glow-color), transparent);
   animation: quiz_scan 8s linear infinite;
 }
+
 @keyframes quiz_scan {
   0% {
     transform: translateY(0);
@@ -1489,7 +1499,7 @@ input:valid~label {
   border-radius: 8px;
   backdrop-filter: blur(5px);
   border-bottom: 3px solid rgba(255, 255, 255, 0.440);
-  border-left: 2px  rgba(255, 255, 255, 0.545) outset;
+  border-left: 2px rgba(255, 255, 255, 0.545) outset;
   box-shadow: -40px 50px 30px rgba(0, 0, 0, 0.280);
   transform: skewX(10deg);
   transition: .4s;
@@ -1500,8 +1510,8 @@ input:valid~label {
   --glow-spread-color: rgba(50, 32, 212, 0.781);
   --enhanced-glow-color: rgb(211, 206, 255);
   box-shadow: 0 0 1em .20em var(--glow-color),
-  0 0 3em .5em var(--glow-spread-color),
-  inset 0 0 .70em .20em var(--glow-color);
+    0 0 3em .5em var(--glow-spread-color),
+    inset 0 0 .70em .20em var(--glow-color);
   text-shadow: 0 0 .15em var(--glow-color);
 }
 
@@ -1511,7 +1521,7 @@ input:valid~label {
 }
 
 
-.container_quiz_cards h1 {
+.quiz_card h1 {
   position: absolute;
   top: 45%;
   left: 50%;
@@ -1522,10 +1532,10 @@ input:valid~label {
   font-size: 4rem;
   color: white;
   transition: transform 0.5s ease;
-  z-index: 1000;
+  z-index: 100;
 }
 
-.container_quiz_cards p {
+.quiz_card p {
   position: absolute;
   left: -800px;
   bottom: 30%;
@@ -1538,11 +1548,11 @@ input:valid~label {
   z-index: 1000;
 }
 
-.container_quiz_cards:hover h1 {
+.quiz_card:hover h1 {
   transform: translate(-50%, -200px);
 }
 
-.container_quiz_cards:hover p {
+.quiz_card:hover p {
   left: 120px;
 }
 
@@ -1568,8 +1578,8 @@ input:valid~label {
   --glow-spread-color: rgba(212, 32, 32, 0.781);
   --enhanced-glow-color: rgb(211, 206, 255);
   box-shadow: 0 0 1em .20em var(--glow-color),
-  0 0 3em .5em var(--glow-spread-color),
-  inset 0 0 .70em .20em var(--glow-color);
+    0 0 3em .5em var(--glow-spread-color),
+    inset 0 0 .70em .20em var(--glow-color);
   text-shadow: 0 0 .15em var(--glow-color);
 }
 
@@ -1582,9 +1592,9 @@ input:valid~label {
   --glow-spread-color: rgba(179, 32, 212, 0.781);
   --enhanced-glow-color: rgb(240, 206, 255);
   box-shadow: 0 0 1em .20em var(--glow-color),
-  0 0 3em .5em var(--glow-spread-color),
-  inset 0 0 .70em .20em var(--glow-color);
-  text-shadow: 0 0 .15em var(--glow-color); 
+    0 0 3em .5em var(--glow-spread-color),
+    inset 0 0 .70em .20em var(--glow-color);
+  text-shadow: 0 0 .15em var(--glow-color);
 }
 
 .glow3 {
@@ -1596,8 +1606,8 @@ input:valid~label {
   --glow-spread-color: rgba(50, 32, 212, 0.781);
   --enhanced-glow-color: rgb(211, 206, 255);
   box-shadow: 0 0 1em .20em var(--glow-color),
-  0 0 3em .5em var(--glow-spread-color),
-  inset 0 0 .70em .20em var(--glow-color);
+    0 0 3em .5em var(--glow-spread-color),
+    inset 0 0 .70em .20em var(--glow-color);
   text-shadow: 0 0 .15em var(--glow-color);
 }
 
@@ -1608,4 +1618,52 @@ input:valid~label {
   text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573);
 }
 
+.container_perg_back {
+  height: 100vh;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.container {
+  width: 80%;
+  max-width: 600px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.question {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.option {
+  margin: 10px 0;
+}
+
+.option input {
+  margin-right: 10px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.result {
+  font-weight: bold;
+  font-size: 1.3em;
+}
