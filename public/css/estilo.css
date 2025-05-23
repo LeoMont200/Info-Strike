@@ -122,10 +122,10 @@ html {
 
 
 .btn_content {
-  --glow-color: rgb(255, 176, 176);
-  --glow-spread-color: rgba(255, 123, 123, 0.781);
-  --enhanced-glow-color: rgb(211, 206, 255);
-  --btn-color: rgb(136, 61, 61);
+  --glow-color: rgb(244, 94, 94);
+  --glow-spread-color: rgba(255, 65, 65, 0.781);
+  --enhanced-glow-color: rgb(177, 168, 255);
+  --btn-color: rgb(181, 58, 58);
   border: .25em solid var(--glow-color);
   padding: 1em 3em;
   color: var(--glow-color);
@@ -135,8 +135,8 @@ html {
   border-radius: 1em;
   outline: none;
   box-shadow: 0 0 1em .25em var(--glow-color),
-    0 0 4em 1em var(--glow-spread-color),
-    inset 0 0 .75em .25em var(--glow-color);
+  0 0 4em 1em var(--glow-spread-color),
+  inset 0 0 .75em .25em var(--glow-color);
   text-shadow: 0 0 .5em var(--glow-color);
   position: relative;
   transition: all 0.3s;
@@ -149,14 +149,14 @@ html {
   color: var(--btn-color);
   background-color: var(--glow-color);
   box-shadow: 0 0 1em .25em var(--glow-color),
-    0 0 4em 2em var(--glow-spread-color),
-    inset 0 0 .75em .25em var(--glow-color);
+  0 0 4em 2em var(--glow-spread-color),
+  inset 0 0 .75em .25em var(--glow-color);
 }
 
 .btn_content:active {
   box-shadow: 0 0 0.6em .25em var(--glow-color),
-    0 0 2.5em 2em var(--glow-spread-color),
-    inset 0 0 .5em .25em var(--glow-color);
+  0 0 2.5em 2em var(--glow-spread-color),
+  inset 0 0 .5em .25em var(--glow-color);
 }
 
 /* login page */
@@ -1009,6 +1009,28 @@ input:valid~label {
   transform: rotateX(20deg) rotateY(0deg);
 }
 
+.tr_4:hover~#cybercard_card {
+  transform: rotateX(20deg) rotateY(5deg);
+}
+.tr_5:hover~#cybercard_card {
+  transform: rotateX(20deg) rotateY(10deg);
+}
+.tr_6:hover~#cybercard_card {
+  transform: rotateX(10deg) rotateY(-10deg);
+}
+.tr_7:hover~#cybercard_card {
+  transform: rotateX(10deg) rotateY(-5deg);
+}
+.tr_8:hover~#cybercard_card {
+  transform: rotateX(10deg) rotateY(0deg);
+}
+.tr_9:hover~#cybercard_card {
+  transform: rotateX(10deg) rotateY(5deg);
+}
+.tr_10:hover~#cybercard_card {
+  transform: rotateX(10deg) rotateY(10deg);
+}
+
 .footer_container {
   background: linear-gradient(135deg, #111, #1a1a1a);
   border-top: 1px solid #333;
@@ -1056,7 +1078,7 @@ input:valid~label {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.267) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.267) 1px, transparent 1px);
   background-size: 20px 20px;
   opacity: 0.3;
   z-index: 1;
@@ -1312,7 +1334,7 @@ input:valid~label {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.267) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.267) 1px, transparent 1px);
   background-size: 20px 20px;
   opacity: 0.3;
   z-index: 1;
@@ -1374,12 +1396,12 @@ input:valid~label {
   height: 50vh;
   width: 40vw;
   border-radius: 30px;
-    --glow-color: rgb(197, 31, 31);
+  --glow-color: rgb(197, 31, 31);
   --glow-spread-color: rgba(50, 32, 212, 0.781);
   --enhanced-glow-color: rgb(211, 206, 255);
   box-shadow: 0 0 1em .20em var(--glow-color),
-    0 0 3em .5em var(--glow-spread-color),
-    inset 0 0 .70em .20em var(--glow-color);
+  0 0 3em .5em var(--glow-spread-color),
+  inset 0 0 .70em .20em var(--glow-color);
   text-shadow: 0 0 .15em var(--glow-color);
 }
 
@@ -1398,8 +1420,192 @@ input:valid~label {
   --glow-spread-color: rgba(50, 32, 212, 0.781);
   --enhanced-glow-color: rgb(211, 206, 255);
   box-shadow: 0 0 1em .20em var(--glow-color),
-    0 0 3em .5em var(--glow-spread-color),
-    inset 0 0 .70em .20em var(--glow-color);
+  0 0 3em .5em var(--glow-spread-color),
+  inset 0 0 .70em .20em var(--glow-color);
   text-shadow: 0 0 .15em var(--glow-color);
 }
+
+/*quiz page*/
+
+.container_quiz_cards{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #111, #1a1a1a);
+  border-top: 1px solid #333;
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+
+.container_quiz_cards::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--glow-color), transparent);
+  animation: quiz_scan 8s linear infinite;
+}
+@keyframes quiz_scan {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.quiz_glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(360deg, rgba(196, 34, 34, 0.212) 30%, rgba(0, 0, 0, 0.651) 50%, rgba(34, 31, 173, 0.24) 70%);
+  z-index: 2;
+}
+
+.quiz_grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.267) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.267) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.quiz_card {
+  width: 50vw;
+  height: 40vh;
+  padding: 0.5rem;
+  background: rgba(233, 82, 82, 0.34);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.440);
+  border-left: 2px  rgba(255, 255, 255, 0.545) outset;
+  box-shadow: -40px 50px 30px rgba(0, 0, 0, 0.280);
+  transform: skewX(10deg);
+  transition: .4s;
+  overflow: hidden;
+  color: white;
+  z-index: 100;
+  --glow-color: rgb(234, 52, 52);
+  --glow-spread-color: rgba(50, 32, 212, 0.781);
+  --enhanced-glow-color: rgb(211, 206, 255);
+  box-shadow: 0 0 1em .20em var(--glow-color),
+  0 0 3em .5em var(--glow-spread-color),
+  inset 0 0 .70em .20em var(--glow-color);
+  text-shadow: 0 0 .15em var(--glow-color);
+}
+
+.quiz_card:hover {
+  height: 70vh;
+  transform: skew(5deg);
+}
+
+
+.container_quiz_cards h1 {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4rem;
+  color: white;
+  transition: transform 0.5s ease;
+  z-index: 1000;
+}
+
+.container_quiz_cards p {
+  position: absolute;
+  left: -800px;
+  bottom: 30%;
+  width: 80%;
+  font-family: "Share Tech", sans-serif;
+  font-size: 3rem;
+  color: #fff;
+  line-height: 1.2;
+  transition: left 0.7s ease;
+  z-index: 1000;
+}
+
+.container_quiz_cards:hover h1 {
+  transform: translate(-50%, -200px);
+}
+
+.container_quiz_cards:hover p {
+  left: 120px;
+}
+
+
+.balls {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-self: center;
+  animation: flicker 0.8s infinite alternate;
+}
+
+
+
+
+.glow1 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff4744;
+  --glow-color: rgb(232, 62, 62);
+  --glow-spread-color: rgba(212, 32, 32, 0.781);
+  --enhanced-glow-color: rgb(211, 206, 255);
+  box-shadow: 0 0 1em .20em var(--glow-color),
+  0 0 3em .5em var(--glow-spread-color),
+  inset 0 0 .70em .20em var(--glow-color);
+  text-shadow: 0 0 .15em var(--glow-color);
+}
+
+.glow2 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #8700ca;
+  --glow-color: rgb(169, 69, 223);
+  --glow-spread-color: rgba(179, 32, 212, 0.781);
+  --enhanced-glow-color: rgb(240, 206, 255);
+  box-shadow: 0 0 1em .20em var(--glow-color),
+  0 0 3em .5em var(--glow-spread-color),
+  inset 0 0 .70em .20em var(--glow-color);
+  text-shadow: 0 0 .15em var(--glow-color); 
+}
+
+.glow3 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #4444ff;
+  --glow-color: rgb(60, 65, 213);
+  --glow-spread-color: rgba(50, 32, 212, 0.781);
+  --enhanced-glow-color: rgb(211, 206, 255);
+  box-shadow: 0 0 1em .20em var(--glow-color),
+  0 0 3em .5em var(--glow-spread-color),
+  inset 0 0 .70em .20em var(--glow-color);
+  text-shadow: 0 0 .15em var(--glow-color);
+}
+
+.quiz_card h1 {
+  text-align: center;
+  margin: 1.3rem;
+  color: rgb(218, 244, 237);
+  text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573);
+}
+
 
