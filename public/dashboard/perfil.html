@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gráfico de Perfil Marcial</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    canvas {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h2>Seu Perfil de Arte Marcial</h2>
+  <canvas id="graficoRadar"></canvas>
+
+  <script>
+    const labels = [
+      "Estilo de combate preferido",
+      "Distância de combate",
+      "Importância na luta",
+      "Perfil da arte marcial",
+      "Valor principal",
+      "Forma de vitória",
+      "Estilo de aprendizado",
+      "Objetivo com a arte marcial",
+      "Tipo de golpe preferido",
+      "Ambiente ideal para treinar"
+    ];
+
+    const respostas = JSON.parse(localStorage.getItem("respostas"));
+
+    const ctx = document.getElementById("graficoRadar").getContext("2d");
+
+    new Chart(ctx, {
+      type: "radar",
+      data: {
+        labels: labels,
+        datasets: [{
+          label: "Seu Perfil Marcial",
+          data: respostas,
+          backgroundColor: "rgba(54, 162, 235, 0.2)",
+          borderColor: "rgba(54, 162, 235, 1)",
+          pointBackgroundColor: "rgba(54, 162, 235, 1)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(54, 162, 235, 1)"
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top"
+          },
+          title: {
+            display: true,
+            text: "Radar de Preferências em Artes Marciais"
+          }
+        },
+        scales: {
+          r: {
+            beginAtZero: true,
+            min: 0,
+            max: 100,
+            ticks: {
+              stepSize: 10
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
+

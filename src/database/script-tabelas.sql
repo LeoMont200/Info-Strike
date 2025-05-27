@@ -1,126 +1,41 @@
-<<<<<<< HEAD
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+create database InfoStrike;
+use InfoStrike;
 
-/*
-comandos para mysql server
-*/
-
-CREATE DATABASE aquatech;
-
-USE aquatech;
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14),
-	codigo_ativacao VARCHAR(50)
+create table usuario (
+idusuario int primary key auto_increment,
+nome varchar(45),
+email varchar(50),
+senha varchar(45)
 );
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+create table arteMarcial (
+idarteMarcial int primary key auto_increment,
+nome varchar(45),
+tipo varchar(15),
+	check (tipo in ('Striking', 'Grappling')),
+descricao varchar(500),
+tendencia varchar(30),
+	check(tendencia in ('Ofensiva', 'Defensiva', 'Equilibrada'))
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+create table quiz (
+	idquiz int auto_increment,
+    idusuario int,
+		foreign key (idusuario) references usuario(idusuario),
+	idarteMarcial int,
+		foreign key (idarteMarcial) references arteMarcial(idarteMarcial),
+	tipo varchar(15),
+    compatibilidade int,
+    tendencia varchar(30),
+		check(tendencia in ('Ofensiva', 'Defensiva', 'Equilibrada')),
+    primary key(idquiz,idusuario,idarteMarcial)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
-
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-=======
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql server
-*/
-
-CREATE DATABASE aquatech;
-
-USE aquatech;
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14),
-	codigo_ativacao VARCHAR(50)
-);
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
-
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-);
-
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
-
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
->>>>>>> 3895ef7a48b52440ffbb6bcb792d0403cb66362d
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+insert into arteMarcial (nome, tipo, descricao, tendencia) values
+('Boxe', 'Striking', 'Foca em socos poderosos e rápidos, amplificados pelo jogo de pés estratégico junto com esquivas e bloqueios.','Equilibrada'),
+('Muay Thai', 'Striking', 'A "arte das oito armas" ultiliza chutes, socos, cotoveladas e joelhadas para incapacitação do oponente no menor tempo possível. Combinado com um jogo de clinch avançado e rasteiras avassaladoras', 'Ofensiva'),
+('Taekwondo', 'Striking', 'O Taekwondo se especializa em chutes extremamente fortes, dos quais ultilizam movimentos acrobáticos que são úteis para maior ganho de alcance e potência.', 'Ofensiva'),
+('Karatê','Striking', 'Aprender Karatê é muito mais do que aprender como lutar, é aprender a ter autocontrole e viver em um caminho de paz, no entanto seus golpes rápidos como um trovão podem facilmente parar qualquer um que tente acabar com essa paz.','Equilibrada'),
+('Judô', 'Grappling', 'O "caminho suave" é sobre ultilizar de movimentos de alavancagem para desequilibrar e arremessar o oponente, acertando ele com a própria terra ao invés do corpo.','Defensiva'),
+('Jiu-Jitsu Brasileiro (BJJ)','Grappling', 'O BJJ é sobre imobilizar seu oponenete no chão como uma cobra, finalizando-o com enforcamentos, chaves de braço, chaves de tornozelo e qualquer outro tipo de golpe que faça o oponente desistir.', 'Defensiva'),
+('Wrestling','Grappling', 'Uma das artes marciais mais antigas, e uma das mais eficientes, focada em derrubar o oponente no chão com explosão e velocidade, assim dominando e imobilizando o mesmo no chão','Ofensiva');

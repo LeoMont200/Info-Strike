@@ -13,80 +13,67 @@
   <div class="container_cadastro">
     <div class="cadastro_right_side">
       <div class="content_right_side">
-        <a class="btn_exit_reg" href="./index.html"> <img src="../public/assets/imgs/arrow-left-circle-svgrepo-com (1).svg" alt="" ></a> <h1>Cadastro</h1>
+        <a class="btn_exit_reg" href="./index.html"> <img
+            src="../public/assets/imgs/arrow-left-circle-svgrepo-com (1).svg" alt=""></a>
+        <h1>Cadastro</h1>
         <div class="input-group">
-          <input required="" type="text" name="text" autocomplete="off" class="input">
+          <input id="ipt_nome" required="" type="text" autocomplete="off" class="input">
           <label class="user-label">Nome</label>
-      </div>
-      <div class="input-group">
-          <input required="" type="text" name="text" autocomplete="off" class="input">
+        </div>
+        <div class="input-group">
+          <input id="ipt_email" required="" type="text" autocomplete="off" class="input">
           <label class="user-label">Email</label>
-      </div>
-      <div class="input-group">
-        <input required="" type="text" name="text" autocomplete="off" class="input">
-        <label class="user-label">Senha</label>
-    </div>
-    <div class="input-group">
-      <input required="" type="text" name="text" autocomplete="off" class="input">
-      <label class="user-label">Confirmação de senha</label>
-  </div>
+        </div>
+        <div class="input-group">
+          <input id="ipt_senha" required="" type="password" autocomplete="off" class="input">
+          <label class="user-label">Senha</label>
+        </div>
+        <div class="input-group">
+          <input id="ipt_confSenha" required="" type="password" autocomplete="off" class="input">
+          <label class="user-label">Confirmação de senha</label>
+        </div>
 
-        <button class="btn_cadastro_page">Cadastrar</button>
-        <p>Já possui uma conta?<a href="login.html" > Login</a></p>
+        <button onclick="cadastrar()" class="btn_cadastro_page">Cadastrar</button>
+        <p>Já possui uma conta?<a href="login.html"> Login</a></p>
       </div>
     </div>
   </div>
 </body>
 
-</html>
-
 <script>
 
   // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
+  listaUsuariosCadastrados= []
 
   function cadastrar() {
     // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
+    var nomeVar = ipt_nome.value;
+    var emailVar = ipt_email.value;
+    var senhaVar = ipt_senha.value;
+    var confirmacaoSenhaVar = ipt_confSenha.value;
+    var idUsuario
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
+      confirmacaoSenhaVar == ""
     ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+      alert("Erro! Preencha todos os campos");
 
-      finalizarAguardar();
+      
       return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
+    }
+    if (senhaVar !== confirmacaoSenhaVar) {
+      alert("Erro! As senhas não coincidem.");
+      return false;
     }
 
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }
+
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -100,31 +87,31 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        idUsuarioServer: idUsuario
       }),
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
+          
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+          alert(
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
           setTimeout(() => {
             window.location = "login.html";
           }, "2000");
 
           limparFormulario();
-          finalizarAguardar();
+          
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
+        ;
       });
 
     return false;
@@ -132,16 +119,16 @@
 
   // Listando empresas cadastradas 
   function listar() {
-    fetch("/empresas/listar", {
+    fetch("/usuarios/listar", {
       method: "GET",
     })
       .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
+        resposta.json().then((usuarios) => {
+          usuarios.forEach((usuario) => {
+            listaUsuariosCadastrados.push(usuario.nome);
 
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+            console.log("listaUsuariosCadastrados")
+            console.log(listaUsuariosCadastrados[0].nome)
           });
         });
       })
@@ -149,7 +136,11 @@
         console.log(`#ERRO: ${resposta}`);
       });
   }
-
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
+  function LimparFormulario() {
+  ipt_nome.value = "";
+  ipt_email.value = "";
+  ipt_senha.value = "";
+  ipt_confSenha.value = "";
+}
+</script>
+</html>
