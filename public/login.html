@@ -19,20 +19,18 @@
     <div class="container_login">
         <div class="left_side_login">
             <div class="content_left_side">
-                <a class="btn_exit_log" href="./index.html"> <img src="../public/assets/imgs/arrow-left-circle-svgrepo-com (1).svg" alt="" ></a>
+                <a class="btn_exit_log" href="./index.html"> <img src="./assets/imgs/arrow-left-circle-svgrepo-com (1).svg" alt="" ></a>
                 <h1>Login</h1>
-                <!---- <input type="text" id="ipt_email" class="input_login">
-                <input type="text" id="ipt_senha" class="input_login">-->
                 <div class="input-group">
-                    <input required="" type="text" name="text" autocomplete="off" class="input">
-                    <label class="user-label">Email</label>
+                    <input id="ipt_nome" required="" type="text" autocomplete="off" class="input">
+                    <label class="user-label">Nome</label>
                 </div>
                 <div class="input-group">
-                    <input required="" type="text" name="text" autocomplete="off" class="input">
+                    <input id="ipt_senha" required="" type="password" autocomplete="off" class="input">
                     <label class="user-label">Senha</label>
                 </div>
 
-                <button class="btn_login_page">Entrar</button>
+                <button class="btn_login_page" onclick="entrar()">Entrar</button>
 
                 <p>Ainda não possui cadastro?<a href="cadastro.html"> Cadastrar</a></p>
             </div>
@@ -43,28 +41,22 @@
     </div>
 </body>
 
-</html>
-
 <script>
 
 
     function entrar() {
-        aguardar();
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+        var nomeVar = ipt_nome.value;
+        var senhaVar = ipt_senha.value;
 
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        if (nomeVar == "" || senhaVar == "") {
+            alert("Erro! Preencha todos os campos")
             finalizarAguardar();
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+        
 
-        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM LOGIN: ", nomeVar);
         console.log("FORM SENHA: ", senhaVar);
 
         fetch("/usuarios/autenticar", {
@@ -73,7 +65,7 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                emailServer: emailVar,
+                nomeServer: nomeVar,
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
@@ -88,11 +80,11 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
+                        function linkar() {
+                        window.location = "./dashboard/home.html";
+                    }
+                    
+                    linkar()
 
                 });
 
@@ -101,8 +93,7 @@
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
+                    console.error(texto); 
                 });
             }
 
@@ -112,8 +103,6 @@
 
         return false;
     }
-
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+</script>
+</html>
 
