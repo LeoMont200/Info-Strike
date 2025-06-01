@@ -1,35 +1,31 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
-
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida
-                    WHERE fk_aquario = ${idAquario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+// Buscar respostas do usuário (última resposta cadastrada)
+function buscarUltimasMedidas(idusuario) {
+    var instrucaoSql = `
+        SELECT r1, r2, r3, r4, r5, r6, r7
+        FROM resposta
+        WHERE fkusuario = ${idusuario}
+        ORDER BY idresposta DESC
+        LIMIT 1;
+    `;
+    console.log("Executando SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
-
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        FROM medida WHERE fk_aquario = ${idAquario} 
-                    ORDER BY id DESC LIMIT 1`;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+// Buscar perfil da arte marcial ideal do usuário (relacionado via fkarteMarcial)
+function buscarMedidasEmTempoReal(idusuario) {
+    var instrucaoSql = `
+        SELECT am.r1, am.r2, am.r3, am.r4, am.r5, am.r6, am.r7, am.nome
+        FROM usuario u
+        JOIN arteMarcial am ON u.fkarteMarcial = am.idarteMarcial
+        WHERE u.idusuario = ${idusuario};
+    `;
+    console.log("Executando SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal
-}
+};
