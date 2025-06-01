@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gráfico de Perfil Marcial</title>
+  <title>Perfil - Info Strike</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
@@ -12,73 +13,164 @@
       margin: auto;
       padding: 20px;
     }
+
     canvas {
       max-width: 100%;
     }
   </style>
 </head>
+
 <body>
   <h2>Seu Perfil de Arte Marcial</h2>
   <canvas id="graficoRadar"></canvas>
 
   <script>
-    const labels = [
-      "Estilo de combate preferido",
-      "Distância de combate",
-      "Importância na luta",
-      "Perfil da arte marcial",
-      "Valor principal",
-      "Forma de vitória",
-      "Estilo de aprendizado",
-      "Objetivo com a arte marcial",
-      "Tipo de golpe preferido",
-      "Ambiente ideal para treinar"
-    ];
 
-    const respostas = JSON.parse(localStorage.getItem("respostas"));
+    function obterDadosGrafico(idusuario) {
+      alterarTitulo(idusuario);
 
-    const ctx = document.getElementById("graficoRadar").getContext("2d");
+      if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+      }
 
-    new Chart(ctx, {
-      type: "radar",
-      data: {
-        labels: labels,
-        datasets: [{
-          label: "Seu Perfil Marcial",
-          data: respostas,
-          backgroundColor: "rgba(54, 162, 235, 0.2)",
-          borderColor: "rgba(54, 162, 235, 1)",
-          pointBackgroundColor: "rgba(54, 162, 235, 1)",
-          pointBorderColor: "#fff",
-          pointHoverBackgroundColor: "#fff",
-          pointHoverBorderColor: "rgba(54, 162, 235, 1)"
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "top"
+      fetch(`/medidas/ultimas/${idusuario}`, { cache: 'no-store' })
+        .then(function (resUsuario) {
+          if (!resUsuario.ok) throw new Error("Erro ao buscar respostas do usuário.");
+          return resUsuario.json();
+        })
+        .then(function (respostaUsuario) {
+          fetch(`/medidas/tempo-real/${idusuario}`, { cache: 'no-store' })
+            .then(function (resArte) {
+              if (!resArte.ok) throw new Error("Erro ao buscar arte marcial ideal.");
+              return resArte.json();
+            })
+            .then(function (respostaArte) {
+              console.log("Usuário:", respostaUsuario);
+              console.log("Arte marcial:", respostaArte);
+              plotarGrafico(respostaUsuario[0], respostaArte[0]);
+            });
+        })
+        .catch(function (erro) {
+          console.error("Erro ao obter dados do gráfico:", erro.message);
+        });
+    }
+
+
+
+    function plotarGrafico(dadosUsuario, dadosArte) {
+      const criterios = [
+        "Contato",
+        "Distância de combate",
+        "Objetivo na luta",
+        "Praticidade/Realismo",
+        "Tradição e Filosofia",
+        "Forma de Vitória",
+        "Tipo de golpe especializado"
+      ];
+
+      const dados = {
+        labels: criterios,
+        datasets: [
+          {
+            label: "Sua Preferência",
+            data: [
+              dadosUsuario.r1, dadosUsuario.r2, dadosUsuario.r3,
+              dadosUsuario.r4, dadosUsuario.r5, dadosUsuario.r6, dadosUsuario.r7
+            ],
+            backgroundColor: "rgba(0, 0, 175, 0.2)",
+            borderColor: "rgba(0, 0, 175, 1)",
+            pointBackgroundColor: "rgba(0, 0, 150, 1)"
           },
-          title: {
-            display: true,
-            text: "Radar de Preferências em Artes Marciais"
+          {
+            label: `Sua Arte Marcial Ideal (${dadosArte.nome})`,
+            data: [
+              dadosArte.r1, dadosArte.r2, dadosArte.r3,
+              dadosArte.r4, dadosArte.r5, dadosArte.r6, dadosArte.r7
+            ],
+            backgroundColor: "rgba(175, 0, 0, 0.2)",
+            borderColor: "rgba(175, 0, 0, 1)",
+            pointBackgroundColor: "rgba(150, 0, 0, 1)"
           }
-        },
-        scales: {
-          r: {
-            beginAtZero: true,
-            min: 0,
-            max: 100,
-            ticks: {
-              stepSize: 10
+        ]
+      };
+
+      const config = {
+        type: 'radar',
+        data: dados,
+        options: {
+          scales: {
+            r: {
+              beginAtZero: true,
+              min: 0,
+              max: 100,
+              ticks: { stepSize: 10 },
+              pointLabels: {
+                font: { size: 14 }
+              }
             }
           }
         }
-      }
-    });
+      };
+
+      const ctx = document.getElementById("graficoRadar");
+      new Chart(ctx, config);
+    }
+
+
+
+    function atualizarGrafico(idusuario, dados, myChart) {
+
+
+
+      fetch(`/medidas/tempo-real/${idusuario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (novoRegistro) {
+
+            obterdados(idusuario);
+            // alertar(novoRegistro, idusuario);
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico:`);
+            console.log(dados);
+
+            let avisoCaptura = document.getElementById(`avisoCaptura${idusuario}`)
+            avisoCaptura.innerHTML = ""
+
+
+            if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+              console.log("---------------------------------------------------------------")
+              console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+              avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+              console.log("Horário do novo dado capturado:")
+              console.log(novoRegistro[0].momento_grafico)
+              console.log("Horário do último dado capturado:")
+              console.log(dados.labels[dados.labels.length - 1])
+              console.log("---------------------------------------------------------------")
+            } else {
+              // tirando e colocando valores no gráfico
+              dados.labels.shift(); // apagar o primeiro
+              dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+              dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+              dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+              dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+              dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+              myChart.update();
+            }
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idusuario, dados, myChart), 2000);
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => atualizarGrafico(idusuario, dados, myChart), 2000);
+        }
+      })
+        .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+    }
   </script>
-</body>
-</html>
-
-
