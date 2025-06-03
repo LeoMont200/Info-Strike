@@ -5,101 +5,396 @@
   <meta charset="UTF-8">
   <title>Perfil - Info-Strike</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    body {
-      font-family: sans-serif;
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    canvas {
-      max-width: 100%;
-    }
-  </style>
+  <link rel="icon" href="../assets/imgs/logo small.png">
+  <link rel="stylesheet" href="../css/estilo.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-  <h2>Seu Perfil de Arte Marcial</h2>
-  <canvas id="graficoRadar"></canvas>
+  <div class="perfil_container">
+    <div class="navbar">
+      <div class="logo_navbar">
+        <img src="../assets/imgs/Logo.png" alt="">
+      </div>
+      <div class="items_navbar">
+        <a href="home.html">Home</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="perfil.html">Perfil</a>
+      </div>
+      <div class="buttons_navbar">
+        <a class="btn_exit" href="../index.html"> <img src="../assets/imgs/arrow-left-svgrepo-com.svg" alt=""></a>
+      </div>
+    </div>
+    <script>
+      window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        const placar = document.querySelector('.scoreboard .card');
 
-  <script>
-    const idusuario = sessionStorage.ID_USUARIO;
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+          placar.classList.add('show_on_scroll');
+        } else {
+          navbar.classList.remove('scrolled');
+          placar.classList.remove('show_on_scroll');
+        }
+      });
+    </script>
+    <div class="scoreboard">
+      <div class="card hidden_on_top">
+        <div class="card">
+          <div data-status="inprogress" class="teams">
+            <span class="team_info team_home">
+              <span class="team_info_container">
+                <span class="team_name_info">Fulano</span>
+              </span>
+            </span>
+            <span class="event_scoreboard">
+              <span class="event_score_container">
+                <span class="current_time_container">
+                  <span class="event_current_time">
+                    <span class="event_clock">3:42</span>
+                    <span class="current_part">3rd Round</span>
+                  </span>
+                  <span class="progress_dots" data-progress="1S">
+                    <span class="load"></span>
+                  </span>
+                </span>
+                <span class="score_container"
+                  style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
+                  <span class="score_home" id="fulano" style="font-size: 25px; font-weight: bold;">0</span>
+                  <span class="score_spliter" style="font-size: 25px; font-weight: bold;">-</span>
+                  <span class="score_away" id="ciclano" style="font-size: 25px; font-weight: bold;">0</span>
+                </span>
+              </span>
+            </span>
+            <span class="team_info team_away">
+              <span class="team_info_container">
+                <span class="team_icon_container"></span>
+                <span class="team_name_info">Ciclano</span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    function carregarGraficoRadar() {
-      fetch(`/respostas/obterRespostas/${idusuario}`, { cache: 'no-store' })
-        .then(response => {
-          if (!response.ok) throw new Error("Erro ao buscar respostas.");
-          return response.json();
-        })
-        .then(respostas => {
-          if (respostas.length === 0) {
-            alert("Nenhuma resposta encontrada.");
-            return;
-          }
-          const dadosUsuario = respostas[0].usuario;
-          const dadosArteMarcial = respostas[0].arteMarcial;
-          const nomeArteMarcial = dadosArteMarcial.nome || "Arte Marcial";
+    <div class="container_perfil_chart">
+      <div class="perfil_glow"></div>
+      <div class="perfil_grid"></div>
+      <div class="perfil_chart">
+        <div class="perfil_left_side">
+          <!-- CARD 1 -->
+          <div class="KPI_content">
+            <div class="KPI_container">
+              <div class="KPI_canvas">
+                <!-- 25 trackers -->
+                <div class="KPI_tracker tr_1"></div>
+                <div class="KPI_tracker tr_2"></div>
+                <div class="KPI_tracker tr_3"></div>
+                <div class="KPI_tracker tr_4"></div>
+                <div class="KPI_tracker tr_5"></div>
+                <div class="KPI_tracker tr_6"></div>
+                <div class="KPI_tracker tr_7"></div>
+                <div class="KPI_tracker tr_8"></div>
+                <div class="KPI_tracker tr_9"></div>
+                <div class="KPI_tracker tr_10"></div>
+                <div class="KPI_tracker tr_11"></div>
+                <div class="KPI_tracker tr_12"></div>
+                <div class="KPI_tracker tr_13"></div>
+                <div class="KPI_tracker tr_14"></div>
+                <div class="KPI_tracker tr_15"></div>
+                <div class="KPI_tracker tr_16"></div>
+                <div class="KPI_tracker tr_17"></div>
+                <div class="KPI_tracker tr_18"></div>
+                <div class="KPI_tracker tr_19"></div>
+                <div class="KPI_tracker tr_20"></div>
+                <div class="KPI_tracker tr_21"></div>
+                <div class="KPI_tracker tr_22"></div>
+                <div class="KPI_tracker tr_23"></div>
+                <div class="KPI_tracker tr_24"></div>
+                <div class="KPI_tracker tr_25"></div>
+
+                <!-- Card -->
+                <div id="KPI_card">
+                  <div class="KPI_glare"></div>
+                  <div class="KPI_glow_wrap">
+                    <div class="KPI_glow"></div>
+                    <div class="KPI_glow"></div>
+                    <div class="KPI_glow"></div>
+                  </div>
+                  <div class="KPI_particles">
+                    <div class="KPI_particle" style="top:10%; left:20%;"></div>
+                    <div class="KPI_particle" style="top:50%; left:80%;"></div>
+                    <div class="KPI_particle" style="top:70%; left:30%;"></div>
+                  </div>
+                  <div class="KPI_corners">
+                    <div class="KPI_corner tl"></div>
+                    <div class="KPI_corner tr"></div>
+                    <div class="KPI_corner bl"></div>
+                    <div class="KPI_corner br"></div>
+                  </div>
+                  <div class="KPI_lines">
+                    <div class="KPI_line"></div>
+                    <div class="KPI_line"></div>
+                    <div class="KPI_line"></div>
+                  </div>
+                  <div class="KPI_title">Desenvolvimento Pessoal</div>
+                  <div class="KPI_subtitle">Por incrível que pareça, lutar te faz ser uma pessoa mais
+                    calma, estratégica, que sabe agir bem sob pressão. Enquanto te ensina a estar
+                    confortável em situações disconfortáveis</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2 -->
+          <div class="KPI_content">
+            <div class="KPI_container">
+              <div class="KPI_canvas">
+                <!-- 25 trackers -->
+                <div class="KPI_tracker tr_1"></div>
+                <div class="KPI_tracker tr_2"></div>
+                <div class="KPI_tracker tr_3"></div>
+                <div class="KPI_tracker tr_4"></div>
+                <div class="KPI_tracker tr_5"></div>
+                <div class="KPI_tracker tr_6"></div>
+                <div class="KPI_tracker tr_7"></div>
+                <div class="KPI_tracker tr_8"></div>
+                <div class="KPI_tracker tr_9"></div>
+                <div class="KPI_tracker tr_10"></div>
+                <div class="KPI_tracker tr_11"></div>
+                <div class="KPI_tracker tr_12"></div>
+                <div class="KPI_tracker tr_13"></div>
+                <div class="KPI_tracker tr_14"></div>
+                <div class="KPI_tracker tr_15"></div>
+                <div class="KPI_tracker tr_16"></div>
+                <div class="KPI_tracker tr_17"></div>
+                <div class="KPI_tracker tr_18"></div>
+                <div class="KPI_tracker tr_19"></div>
+                <div class="KPI_tracker tr_20"></div>
+                <div class="KPI_tracker tr_21"></div>
+                <div class="KPI_tracker tr_22"></div>
+                <div class="KPI_tracker tr_23"></div>
+                <div class="KPI_tracker tr_24"></div>
+                <div class="KPI_tracker tr_25"></div>
+
+                <!-- CARD -->
+                <div id="KPI_card">
+                  <div class="KPI_glare"></div>
+                  <div class="KPI_glow_wrap">
+                    <div class="KPI_glow"></div>
+                    <div class="KPI_glow"></div>
+                    <div class="KPI_glow"></div>
+                  </div>
+                  <div class="KPI_particles">
+                    <div class="KPI_particle" style="top:10%; left:20%;"></div>
+                    <div class="KPI_particle" style="top:50%; left:80%;"></div>
+                    <div class="KPI_particle" style="top:70%; left:30%;"></div>
+                  </div>
+                  <div class="KPI_corners">
+                    <div class="KPI_corner tl"></div>
+                    <div class="KPI_corner tr"></div>
+                    <div class="KPI_corner bl"></div>
+                    <div class="KPI_corner br"></div>
+                  </div>
+                  <div class="KPI_lines">
+                    <div class="KPI_line"></div>
+                    <div class="KPI_line"></div>
+                    <div class="KPI_line"></div>
+                  </div>
+                  <div class="KPI_title">Saúde Mental</div>
+                  <div class="KPI_subtitle">Desenvolve sua parte motora, cognitiva, emocional e
+                    comportamental.
+                    Lutar serve como uma válvula de escape para o estresse do dia a dia, além de desenvolver
+                    seus reflexos e coordenação motora.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="perfil_mid_side">
+          <div class="titulo">
+            <p>Seu Perfil de Arte Marcial</p>
+          </div>
+          <canvas id="graficoRadar"></canvas>
+        </div>
+        <div class="perfil_right_side">
+          <!-- CARD 2 -->
+          <div class="KPI_content">
+            <div class="KPI_container">
+              <div class="KPI_canvas">
+                <!-- 25 trackers -->
+                <div class="KPI_tracker tr_1"></div>
+                <div class="KPI_tracker tr_2"></div>
+                <div class="KPI_tracker tr_3"></div>
+                <div class="KPI_tracker tr_4"></div>
+                <div class="KPI_tracker tr_5"></div>
+                <div class="KPI_tracker tr_6"></div>
+                <div class="KPI_tracker tr_7"></div>
+                <div class="KPI_tracker tr_8"></div>
+                <div class="KPI_tracker tr_9"></div>
+                <div class="KPI_tracker tr_10"></div>
+                <div class="KPI_tracker tr_11"></div>
+                <div class="KPI_tracker tr_12"></div>
+                <div class="KPI_tracker tr_13"></div>
+                <div class="KPI_tracker tr_14"></div>
+                <div class="KPI_tracker tr_15"></div>
+                <div class="KPI_tracker tr_16"></div>
+                <div class="KPI_tracker tr_17"></div>
+                <div class="KPI_tracker tr_18"></div>
+                <div class="KPI_tracker tr_19"></div>
+                <div class="KPI_tracker tr_20"></div>
+                <div class="KPI_tracker tr_21"></div>
+                <div class="KPI_tracker tr_22"></div>
+                <div class="KPI_tracker tr_23"></div>
+                <div class="KPI_tracker tr_24"></div>
+                <div class="KPI_tracker tr_25"></div>
+
+                <!-- CARD -->
+                <div id="KPI_card">
+                  <div class="KPI_glare"></div>
+                  <div class="KPI_glow_wrap">
+                    <div class="KPI_glow"></div>
+                    <div class="KPI_glow"></div>
+                    <div class="KPI_glow"></div>
+                  </div>
+                  <div class="KPI_particles">
+                    <div class="KPI_particle" style="top:10%; left:20%;"></div>
+                    <div class="KPI_particle" style="top:50%; left:80%;"></div>
+                    <div class="KPI_particle" style="top:70%; left:30%;"></div>
+                  </div>
+                  <div class="KPI_corners">
+                    <div class="KPI_corner tl"></div>
+                    <div class="KPI_corner tr"></div>
+                    <div class="KPI_corner bl"></div>
+                    <div class="KPI_corner br"></div>
+                  </div>
+                  <div class="KPI_lines">
+                    <div class="KPI_line"></div>
+                    <div class="KPI_line"></div>
+                    <div class="KPI_line"></div>
+                  </div>
+                  <div class="KPI_title">Saúde Mental</div>
+                  <div class="KPI_subtitle">Desenvolve sua parte motora, cognitiva, emocional e
+                    comportamental.
+                    Lutar serve como uma válvula de escape para o estresse do dia a dia, além de desenvolver
+                    seus reflexos e coordenação motora.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text_desc_perfil">
+            <h2>Descrição:</h2>
+            <p id="descArte"></p>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
-          const criterios = [
-            "Contato", "Distância de combate", "Objetivo na luta",
-            "Praticidade/Realismo", "Forma de Vitória",
-            "Tipo de golpe especializado", "Tipo de treinamento"
-          ];
 
-          const dados = {
+    <script>
+      const idusuario = sessionStorage.ID_USUARIO;
 
-            labels: criterios,
-            datasets: [{
-              label: "Você",
-              data: [
-                dadosUsuario.r1, dadosUsuario.r2, dadosUsuario.r3,
-                dadosUsuario.r4, dadosUsuario.r5, dadosUsuario.r6, dadosUsuario.r7
-              ],
-              backgroundColor: "rgba(0, 0, 175, 0.2)",
-              borderColor: "rgba(0, 0, 175, 1)",
-              pointBackgroundColor: "rgba(0, 0, 175, 1)"
-            },
-            {
-              label: dadosArteMarcial.nome,
-              data: [
-                dadosArteMarcial.r1, dadosArteMarcial.r2, dadosArteMarcial.r3,
-              dadosArteMarcial.r4, dadosArteMarcial.r5, dadosArteMarcial.r6, dadosArteMarcial.r7
-              ],
-              backgroundColor: "rgba(175, 0, 0, 0.2)",
-              borderColor: "rgba(175, 0, 0, 1)",
-              pointBackgroundColor: "rgba(175, 0, 0, 1)"
-            }]
-          };
+      function carregarGraficoRadar() {
+        fetch(`/respostas/obterRespostas/${idusuario}`, { cache: 'no-store' })
+          .then(response => {
+            if (!response.ok) throw new Error("Erro ao buscar respostas.");
+            return response.json();
+          })
+          .then(respostas => {
+            if (respostas.length === 0) {
+              alert("Nenhuma resposta encontrada.");
+              return;
+            }
+            const dadosUsuario = respostas[0].usuario;
+            const dadosArteMarcial = respostas[0].arteMarcial;
+            const nomeArteMarcial = dadosArteMarcial.nome;
+            const descArteMarcial = dadosArteMarcial.desc;
+            descArte.innerHTML = dadosArteMarcial.desc;
 
-          const config = {
-            type: 'radar',
-            data: dados,
-            options: {
-              scales: {
-                r: {
-                  beginAtZero: true,
-                  min: 0,
-                  max: 100,
-                  ticks: { stepSize: 10 },
-                  pointLabels: { font: { size: 14 } }
+
+            const criterios = [
+              "Contato", "Distância de combate", "Objetivo na luta",
+              "Praticidade/Realismo", "Forma de Vitória",
+              "Tipo de golpe especializado", "Tipo de treinamento"
+            ];
+
+            const dados = {
+
+              labels: criterios,
+              datasets: [{
+                label: "Você",
+                data: [
+                  dadosUsuario.r1, dadosUsuario.r2, dadosUsuario.r3,
+                  dadosUsuario.r4, dadosUsuario.r5, dadosUsuario.r6, dadosUsuario.r7
+                ],
+                backgroundColor: "rgba(0, 0, 255, 0.2)",
+                borderColor: "rgba(0, 0, 255, 1)",
+                pointBackgroundColor: "rgba(0, 0, 255, 1)"
+              },
+              {
+                label: dadosArteMarcial.nome,
+                data: [
+                  dadosArteMarcial.r1, dadosArteMarcial.r2, dadosArteMarcial.r3,
+                  dadosArteMarcial.r4, dadosArteMarcial.r5, dadosArteMarcial.r6, dadosArteMarcial.r7
+                ],
+                backgroundColor: "rgba(255, 0, 0, 0.2)",
+                borderColor: "rgba(255, 0, 0, 1)",
+                pointBackgroundColor: "rgba(255, 0, 0, 1)"
+              }]
+            };
+
+            const config = {
+              type: 'radar',
+              data: dados,
+              options: {
+                plugins: {
+                  legend: {
+                    display: false
+                  }
+                },
+                scales: {
+                  r: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100,
+                    ticks: { stepSize: 10, color: '#FFF', backdropColor: '#211B15' },
+                    pointLabels: { font: { size: 15 }, color: '#FFF' },
+                    grid: {
+                      color: 'rgba(255, 255, 255, 1)',
+                      lineWidth: 1
+                    },
+                    angleLines: {
+                      color: 'rgba(255, 255, 255, 1)'
+                    }
+
+                  }
 
                 }
               }
-            }
-          };
+            };
 
-          const ctx = document.getElementById("graficoRadar");
-          new Chart(ctx, config);
-        })
-        .catch(error => {
-          console.error("Erro ao carregar o gráfico:", error.message);
-        });
-    }
+            const ctx = document.getElementById("graficoRadar");
+            new Chart(ctx, config);
+          })
+          .catch(error => {
+            console.error("Erro ao carregar o gráfico:", error.message);
+          });
+      }
 
-    carregarGraficoRadar();
-  </script>
+      carregarGraficoRadar();
+    </script>
 </body>
+</div>
 
 </html>

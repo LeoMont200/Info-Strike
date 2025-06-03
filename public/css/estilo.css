@@ -1434,7 +1434,7 @@ input:valid~label {
 
 /*quiz page*/
 
-.container_quiz{
+.container_quiz {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -1629,7 +1629,7 @@ input:valid~label {
 
 
 .container_perg_back {
-    font-family: 'Share Tech', sans-serif;
+  font-family: 'Share Tech', sans-serif;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -1721,3 +1721,399 @@ input:valid~label {
   border-color: #f5c6cb;
   text-align: center;
 }
+
+/*perfil page*/
+
+.container_perfil {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.container_perfil_chart {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #111, #1a1a1a);
+  border-top: 1px solid #333;
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.5);
+  position: fixed;
+
+
+}
+
+
+.container_perfil_chart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--glow-color), transparent);
+  animation: perfil_scan 8s linear infinite;
+}
+
+@keyframes perfil_scan {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+
+.perfil_glow {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(360deg, rgba(196, 34, 34, 0.212) 30%, rgba(0, 0, 0, 0.651) 50%, rgba(34, 31, 173, 0.24) 70%);
+  z-index: 2;
+  display: flex;
+}
+
+.perfil_grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.267) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.267) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.perfil_chart {
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30vh;
+  margin-bottom: 5%;
+}
+
+.perfil_chart canvas {
+  width: 100%;
+  height: 100%;
+  justify-self: center;
+  margin-right: 5vw;
+  margin-top: -20vh;
+  position: absolute;
+}
+
+.titulo {
+  width: 50%;
+  height: 40%;
+  justify-self: center;
+  text-align: center;
+  color: white;
+  margin-bottom: -20%;
+  margin-right: 2%;
+  font-family: 'Bebas Neue';
+  font-size: 40px;
+  letter-spacing: 1px;
+}
+
+.KPI_container {
+  position: relative;
+  width: 40vh;
+  height: 20vh;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+
+}
+
+.KPI_canvas {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  position: relative;
+  perspective: 800px;
+
+}
+
+.KPI_tracker {
+  position: relative;
+  z-index: 2;
+}
+
+#KPI_card {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+  border: 1px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease;
+  overflow: hidden;
+  --glow-color: rgb(197, 31, 31);
+  --glow-spread-color: rgba(50, 32, 212, 0.781);
+  --enhanced-glow-color: rgb(211, 206, 255);
+  box-shadow: 0 0 1em .20em var(--glow-color),
+    0 0 3em .5em var(--glow-spread-color),
+    inset 0 0 .70em .20em var(--glow-color);
+  text-shadow: 0 0 .15em var(--glow-color);
+}
+
+#KPI_card img {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+
+
+.KPI_glow_wrap {
+  background: linear-gradient(360deg, rgba(196, 34, 34, 0.212) 30%, rgba(0, 0, 0, 0.651)50%, rgba(34, 31, 173, 0.24) 70%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: 0.3s ease;
+  z-index: 1;
+}
+
+.KPI_glow:nth-child(1) {
+  top: 10%;
+  left: 15%;
+}
+
+.KPI_glow:nth-child(2) {
+  bottom: 20%;
+  right: 10%;
+}
+
+.KPI_glow:nth-child(3) {
+  bottom: 10%;
+  left: 30%;
+}
+
+
+@keyframes float {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.KPI_corners {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.KPI_corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgb(35, 33, 161);
+}
+
+.KPI_corner.tl {
+  top: 5px;
+  left: 5px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.KPI_corner.tr {
+  top: 5px;
+  right: 5px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.KPI_corner.bl {
+  bottom: 5px;
+  left: 5px;
+  border-right: none;
+  border-top: none;
+}
+
+.KPI_corner.br {
+  bottom: 5px;
+  right: 5px;
+  border-left: none;
+  border-top: none;
+}
+
+.KPI_title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.6rem;
+  background: rgb(173, 9, 9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform .4s ease;
+  z-index: 100;
+}
+
+.KPI_subtitle {
+  position: absolute;
+  bottom: -152px;
+  left: 10%;
+  width: 80%;
+  font-family: "Share Tech", sans-serif;
+  font-size: .9rem;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+  transition: bottom 0.4s ease;
+  z-index: 4;
+}
+
+.KPI_container:hover .KPI_title {
+  transform: translate(-50%, -130px);
+}
+
+.KPI_container:hover .KPI_subtitle {
+  bottom: 50px;
+}
+
+.KPI_lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+
+}
+
+.KPI_line {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 0, 0, 0.637);
+  margin: 6px 0;
+  animation: flicker 0.4s infinite alternate;
+  z-index: 10;
+}
+
+@keyframes flicker {
+  from {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 0.6;
+  }
+}
+
+.tr_1:hover~#KPI_card {
+  transform: rotateX(20deg) rotateY(-10deg);
+}
+
+.tr_2:hover~#KPI_card {
+  transform: rotateX(20deg) rotateY(-5deg);
+}
+
+.tr_3:hover~#KPI_card {
+  transform: rotateX(20deg) rotateY(0deg);
+}
+
+.tr_4:hover~#KPI_card {
+  transform: rotateX(20deg) rotateY(5deg);
+}
+
+.tr_5:hover~#KPI_card {
+  transform: rotateX(20deg) rotateY(10deg);
+}
+
+.tr_6:hover~#KPI_card {
+  transform: rotateX(10deg) rotateY(-10deg);
+}
+
+.tr_7:hover~#KPI_card {
+  transform: rotateX(10deg) rotateY(-5deg);
+}3
+
+
+.tr_8:hover~#KPI_card {
+  transform: rotateX(10deg) rotateY(0deg);
+}
+
+.tr_9:hover~#KPI_card {
+  transform: rotateX(10deg) rotateY(5deg);
+}
+
+.tr_10:hover~#KPI_card {
+  transform: rotateX(10deg) rotateY(10deg);
+}
+
+.text_desc_perfil h2{
+  font-size: 35px;
+}
+
+.text_desc_perfil p{
+  width: 20vw;
+  font-size: 25px;
+}
+
+.perfil_right_side{
+  display: flex;
+  gap: 10vh;
+  width: 25vw;
+  flex-direction: column;
+  color:white;
+  font-family: "share tech", sans-serif;
+  font-size: 1em;
+}
+
+.perfil_left_side{
+width: 25vw;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10vh;
+}
+
+.perfil_mid_side{
+  width:50vw;
+  height: 100vh;
+}
+.perfil_container{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(135deg, #111, #1a1a1a);
+  border-top: 1px solid #333;
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  --glow-color: rgb(197, 31, 31);
+  --glow-spread-color: rgba(50, 32, 212, 0.781);
+  --enhanced-glow-color: rgb(211, 206, 255);
+}
+
+
