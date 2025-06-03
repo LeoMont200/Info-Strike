@@ -33,7 +33,7 @@
                         alt=""></a>
             </div>
         </div>
-        <script>    
+        <script>
             window.addEventListener('scroll', () => {
                 const navbar = document.querySelector('.navbar');
                 const placar = document.querySelector('.scoreboard .card');
@@ -47,13 +47,14 @@
                 }
             });
         </script>
+
         <div class="scoreboard">
             <div class="card hidden_on_top">
                 <div class="card">
                     <div data-status="inprogress" class="teams">
                         <span class="team_info team_home">
                             <span class="team_info_container">
-                                <span class="team_name_info">Fulano</span>
+                                <span class="team_name_info" style="font-size: 20px; font-weight: bold;">Fulano</span>
                             </span>
                         </span>
                         <span class="event_scoreboard">
@@ -67,17 +68,20 @@
                                         <span class="load"></span>
                                     </span>
                                 </span>
-                                <span class="score_container">
-                                    <span class="score_home">1</span>
-                                    <span class="custom_sep">-</span>
-                                    <span class="score_away">1</span>
+                                <span class="score_container"
+                                    style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
+                                    <span class="score_home" id="fulano"
+                                        style="font-size: 25px; font-weight: bold;">0</span>
+                                    <span class="score_spliter" style="font-size: 25px; font-weight: bold;">-</span>
+                                    <span class="score_away" id="ciclano"
+                                        style="font-size: 25px; font-weight: bold;">0</span>
                                 </span>
                             </span>
                         </span>
                         <span class="team_info team_away">
                             <span class="team_info_container">
                                 <span class="team_icon_container"></span>
-                                <span class="team_name_info">Ciclano</span>
+                                <span class="team_name_info" style="font-size: 20px; font-weight: bold;">Ciclano</span>
                             </span>
                         </span>
                     </div>
@@ -278,11 +282,11 @@
                                 <div class="cybercard_line"></div>
                                 <div class="cybercard_line"></div>
                             </div>
-                                <img src="../assets/corpo.jpg" alt="freepik.com">
-                                <div class="cybercard_title">Saúde do corpo</div>
-                                <div class="cybercard_subtitle">Luta é uma das melhores atividades físicas para tornar
-                                    seu
-                                    corpo saudável, forte, resistente e flexível</div>
+                            <img src="../assets/corpo.jpg" alt="freepik.com">
+                            <div class="cybercard_title">Saúde do corpo</div>
+                            <div class="cybercard_subtitle">Luta é uma das melhores atividades físicas para tornar
+                                seu
+                                corpo saudável, forte, resistente e flexível</div>
                         </div>
                     </div>
                 </div>
@@ -295,48 +299,61 @@
         </div>
     </div>
 
-    
- <footer class="footer_container">
-    <div class="footer_grid"></div>
-    <div class="footer_glow"></div>
-    <div class="footer_corner footer_corner-tl"></div>
-    <div class="footer_corner footer_corner-tr"></div>
-    <div class="footer_corner footer_corner-br"></div>
-    <div class="footer_corner footer_corner-bl"></div>
 
-    <div class="footer_content">
-        <div class="footer_content_group">
-            <div class="footer_content footer_content-logo">
-                <img src="../assets/imgs/Logo.png" alt="Logo" class="footer_logo">
-                <p class="footer_desc">Feito com muito carinho, capricho,<br>dedicação, orgulho, satisfação e aprendizado.</p>
+    <footer class="footer_container">
+        <div class="footer_grid"></div>
+        <div class="footer_glow"></div>
+        <div class="footer_corner footer_corner-tl"></div>
+        <div class="footer_corner footer_corner-tr"></div>
+        <div class="footer_corner footer_corner-br"></div>
+        <div class="footer_corner footer_corner-bl"></div>
+
+        <div class="footer_content">
+            <div class="footer_content_group">
+                <div class="footer_content footer_content-logo">
+                    <img src="../assets/imgs/Logo.png" alt="Logo" class="footer_logo">
+                    <p class="footer_desc">Feito com muito carinho, capricho,<br>dedicação, orgulho, satisfação e
+                        aprendizado.</p>
+                </div>
+
+                <div class="footer_content">
+                    <h3 class="footer_title">CRIADO POR</h3>
+                    <p class="footer_name">Leonardo Monteiro</p>
+                    <p class="footer_email">leonardo.monteiro@sptech.school</p>
+                </div>
+
+                <div class="footer_content footer_content-git">
+                    <h3 class="footer_title">GITHUB</h3>
+                    <a href="https://github.com/LeoMont200/Info-Strike.git" target="_blank" class="footer_github">
+
+                        <img src="../assets/imgs/github-mark.svg" alt="github">
+                    </a>
+                    <p class="footer_signature">/* AGRADEÇO A TODOS OS COLEGAS QUE ME ENSINARAM E AJUDARAM A CHEGAR ATÉ
+                        AQUI, SEM ELES TALVEZ ESSE PROJETO NÃO SERIA POSSÍVEL*/</p>
+                </div>
             </div>
 
-            <div class="footer_content">
-                <h3 class="footer_title">CRIADO POR</h3>
-                <p class="footer_name">Leonardo Monteiro</p>
-                <p  class="footer_email">leonardo.monteiro@sptech.school</p>
-            </div>
-
-            <div class="footer_content footer_content-git">
-                <h3 class="footer_title">GITHUB</h3>
-                <a href="https://github.com/LeoMont200/Info-Strike.git" target="_blank" class="footer_github" >
-                    
-                    <img src="../assets/imgs/github-mark.svg" alt="github">
-                </a>
-                <p class="footer_signature">/* AGRADEÇO A TODOS OS COLEGAS QUE ME ENSINARAM E AJUDARAM A CHEGAR ATÉ AQUI, SEM ELES TALVEZ ESSE PROJETO NÃO SERIA POSSÍVEL*/</p>
+            <div class="footer_base">
+                <p class="footer_copyright">&copy; 2023 Info Strike. Todos os direitos reservados aos devidos criadores
+                    das imagens e gifs. Essas imagens NÃO SÃO de autoria da Info Strike.</p>
+                <div class="footer_social">
+                </div>
             </div>
         </div>
+    </footer>
 
-        <div class="footer_base">
-            <p class="footer_copyright">&copy; 2023 Info Strike. Todos os direitos reservados aos devidos criadores das imagens e gifs. Essas imagens NÃO SÃO de autoria da Info Strike.</p>
-            <div class="footer_social">
-            </div>
-        </div>
-    </div>
-</footer>
 
-        
-        
+    <script>
+        (function atualizarPlacar() {
+            fulano.innerHTML =
+                parseInt(Math.random() * 5);
+
+            ciclano.innerHTML =
+                parseInt(Math.random() * 5);
+
+            setTimeout(atualizarPlacar, 5000);
+        })();
+    </script>
 </body>
 
 </html>

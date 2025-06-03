@@ -67,10 +67,13 @@
                                         <span class="load"></span>
                                     </span>
                                 </span>
-                                <span class="score_container">
-                                    <span class="score_home">1</span>
-                                    <span class="custom_sep">-</span>
-                                    <span class="score_away">1</span>
+                                <span class="score_container"
+                                    style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
+                                    <span class="score_home" id="fulano"
+                                        style="font-size: 25px; font-weight: bold;">0</span>
+                                    <span class="score_spliter" style="font-size: 25px; font-weight: bold;">-</span>
+                                    <span class="score_away" id="ciclano"
+                                        style="font-size: 25px; font-weight: bold;">0</span>
                                 </span>
                             </span>
                         </span>
@@ -278,6 +281,17 @@
         </footer>
     </div>
     </div>
+        <script>
+        (function atualizarPlacar() {
+            fulano.innerHTML =
+                parseInt(Math.random() * 5);
+
+            ciclano.innerHTML =
+                parseInt(Math.random() * 5);
+
+            setTimeout(atualizarPlacar, 5000);
+        })();
+    </script>
 </body>
 
 </html>

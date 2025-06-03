@@ -22,6 +22,8 @@
         </div>
 
         <script>
+            let melhorEstilo = null;
+
             const perguntas = [
                 {
                     text: "1.Qual estilo de combate mais te atrai?",
@@ -141,6 +143,9 @@
                 "Wrestling": [100, 0, 100, 100, 80, 100, 100, 100, 100, 100]
             }
 
+
+
+
             let perguntaAtual = 0;
             const respostasResult = [];
 
@@ -169,10 +174,62 @@
 
                 return criterios;
             }
+            const fkusuario = parseInt(sessionStorage.ID_USUARIO, 10);
+
+            function mostrarResultado() {
+                const vt_result = respostasResult;
+                let menorDistancia = Infinity;
+
+                for (const estilo in estilos) {
+                    const vt_analisador = estilos[estilo];
+                    let distancia = 0;
+
+                    for (let i = 0; i < vt_analisador.length; i++) {
+                        const diferenca = vt_analisador[i] - vt_result[i];
+                        distancia += diferenca * diferenca;
+                    }
+
+                    if (distancia < menorDistancia) {
+                        menorDistancia = distancia;
+                        melhorEstilo = estilo;
+                    }
+                }
+
+                
+
+            document.getElementById("container_perg").innerHTML = `
+                        <div class="result">A arte marcial que mais combina com você é: <strong>${melhorEstilo}</strong>!</div>
+                        <div class="result_opcoes">
+                            <a href="home.html">Home</a>
+                            <a href="sobre.html">Sobre</a>
+                            <a href="perfil.html">Perfil</a>
+                        </div>
+                        `;
+            }
+
 
             function enviarRespostas(respostasResult) {
                 const criterios = extrairCriterios(respostasResult, criteriosPorPergunta);
-                const fkusuario = sessionStorage.ID_USUARIO;
+                let fkestilo;
+                if (melhorEstilo === 'Boxe') {
+                    fkestilo = 1;
+                } else if (melhorEstilo === 'Muay Thai') {
+                    fkestilo = 2;
+                } else if (melhorEstilo === 'Taekwondo') {
+                    fkestilo = 3;
+                } else if (melhorEstilo === 'Karatê') {
+                    fkestilo = 4;
+                } else if (melhorEstilo === 'Judô') {
+                    fkestilo = 5;
+                } else if (melhorEstilo === 'Jiu-Jitsu Brasileiro (BJJ)') {
+                    fkestilo = 6;
+                } else if (melhorEstilo === 'Wrestling') {
+                    fkestilo = 7;
+                } else {
+                    fkestilo = null;
+                }
+
+                console.log(fkestilo)
                 fetch("/respostas/enviarRespostas", {
                     method: "POST",
                     headers: {
@@ -180,6 +237,7 @@
                     },
                     body: JSON.stringify({
                         fkusuario: fkusuario,
+                        fkestilo: fkestilo,
                         r1: criterios.r1,
                         r2: criterios.r2,
                         r3: criterios.r3,
@@ -200,13 +258,13 @@
                 for (let i = 0; i < perg.options.length; i++) {
                     const opt = perg.options[i];
                     conteudo += `
-                            <div class="option">
-                                <label>
-                                    <input type="radio" name="option" value="${opt.value}">
-                                    ${opt.label}
-                                </label>
-                            </div>
-                        `;
+                                <div class="option">
+                                    <label>
+                                        <input type="radio" name="option" value="${opt.value}">
+                                        ${opt.label}
+                                    </label>
+                                </div>
+                            `;
                 }
 
                 conteudo += `<button onclick="proximo()">Próximo</button>`;
@@ -229,38 +287,7 @@
                 }
             }
 
-            function mostrarResultado() {
-                const vt_result = respostasResult;
-                let melhorEstilo = null;
-                let menorDistancia = Infinity;
-
-                for (const estilo in estilos) {
-                    const vt_analisador = estilos[estilo];
-                    let distancia = 0;
-
-                    for (let i = 0; i < vt_analisador.length; i++) {
-                        const diferenca = vt_analisador[i] - vt_result[i];
-                        distancia += diferenca * diferenca;
-                    }
-
-                    if (distancia < menorDistancia) {
-                        menorDistancia = distancia;
-                        melhorEstilo = estilo;
-                    }
-                }
-
-
-                document.getElementById("container_perg").innerHTML = `
-                    <div class="result">A arte marcial que mais combina com você é: <strong>${melhorEstilo}</strong>!</div>
-                    <div class="result_opcoes">
-                        <a href="home.html">Home</a>
-                        <a href="sobre.html">Sobre</a>
-                        <a href="perfil.html">Perfil</a>
-                    </div>
-                    `;
-            }
-
-
+            
 
 
             exibirPerguntas();

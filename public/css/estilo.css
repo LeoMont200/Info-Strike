@@ -696,7 +696,7 @@ input:valid~label {
 }
 
 .card .event_scoreboard .event_score_container .score_container {
-  font-size: 24px;
+  font-size: 35px;
   width: 100%;
   background: linear-gradient(90deg, rgb(187, 15, 15) 20%, rgb(15, 13, 156)80%);
   color: white;
@@ -723,7 +723,6 @@ input:valid~label {
   color: #eee;
   margin-right: 10px;
 }
-
 
 
 .text_home_title {
@@ -1435,6 +1434,15 @@ input:valid~label {
 
 /*quiz page*/
 
+.container_quiz{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
 .container_quiz_cards {
   height: 100vh;
   width: 100%;
@@ -1444,8 +1452,9 @@ input:valid~label {
   background: linear-gradient(135deg, #111, #1a1a1a);
   border-top: 1px solid #333;
   box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.5);
-  position: relative;
+  position: fixed;
   overflow: hidden;
+
 }
 
 
@@ -1473,7 +1482,7 @@ input:valid~label {
 .quiz_glow {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: linear-gradient(360deg, rgba(196, 34, 34, 0.212) 30%, rgba(0, 0, 0, 0.651) 50%, rgba(34, 31, 173, 0.24) 70%);
   z-index: 2;
 }
@@ -1483,7 +1492,7 @@ input:valid~label {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-image: linear-gradient(rgba(255, 255, 255, 0.267) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.267) 1px, transparent 1px);
   background-size: 20px 20px;
   opacity: 0.3;

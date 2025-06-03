@@ -20,14 +20,13 @@ create table usuario (
 	idusuario int primary key auto_increment,
 	nome varchar(45),
 	email varchar(50),
-	senha varchar(45),
-    fkarteMarcial int,
-    foreign key (fkarteMarcial) references arteMarcial(idartemarcial)
+	senha varchar(45)
 );
 
 create table resposta (
 	idresposta int primary key auto_increment,
 	fkusuario int,
+    fkarteMarcial int,
 	r1 int,
 	r2 int,
 	r3 int,
@@ -35,7 +34,8 @@ create table resposta (
 	r5 int,
 	r6 int,
 	r7 int,
-	foreign key (fkusuario) references usuario(idusuario)
+	foreign key (fkusuario) references usuario(idusuario),
+	foreign key (fkarteMarcial) references arteMarcial(idartemarcial)
 );
 
 insert into arteMarcial (nome, tipo, descricao, tendencia, r1, r2, r3, r4, r5, r6, r7) values

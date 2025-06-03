@@ -2,19 +2,70 @@ const respostasModel = require('../models/respostasModel');
 
 exports.enviarRespostas = async (req, res) => {
   try {
-    const { r1, r2, r3, r4, r5, r6, r7 } = req.body;
+    var r1 = req.body.r1;
+    var r2 = req.body.r2;
+    var r3 = req.body.r3;
+    var r4 = req.body.r4;
+    var r5 = req.body.r5;
+    var r6 = req.body.r6;
+    var r7 = req.body.r7;
+    var fkusuario = req.body.fkusuario;
+    var fkestilo = req.body.fkestilo;
 
-    if (typeof fkusuario !== 'number' ||
-      [r1, r2, r3, r4, r5, r6, r7].some(val => typeof val !== 'number')
-    ) {
+    console.log('fkEstilo da controller: '+ fkestilo);
+    
+    if (typeof fkusuario !== 'number' || isNaN(fkusuario) || isNaN(fkestilo) ||
+      [r1, r2, r3, r4, r5, r6, r7].some(val => typeof val !== 'number' || isNaN(val))) {
       return res.status(400).json({ error: 'Dados inválidos' });
     }
 
-    await respostasModel.enviarRespostas({fkusuario, r1, r2, r3, r4, r5, r6, r7 });
+    await respostasModel.enviarRespostas({ fkestilo, fkusuario, r1, r2, r3, r4, r5, r6, r7 });
+
 
     res.status(201).json({ message: 'Respostas salvas com sucesso' });
   } catch (error) {
     console.error('Erro ao salvar respostas:', error);
     res.status(500).json({ error: 'Erro interno do servidor' });
+  }
+};
+
+exports.obterRespostas = async (req, res) => {
+  const idusuario = parseInt(req.params.idusuario, 10);
+  if (isNaN(idusuario)) {
+    return res.status(400).json({ error: "ID do usuário inválido." });
+  }
+
+  try {
+    const resultados = await respostasModel.obterRespostasPorUsuario(idusuario);
+    if (resultados.length === 0) {
+      return res.status(404).json({ error: "Nenhuma resposta encontrada para este usuário." });
+    }
+    const dadosGrafico = {
+      usuario: {
+        r1: resultados[0].usuario_r1,
+        r2: resultados[0].usuario_r2,
+        r3: resultados[0].usuario_r3,
+        r4: resultados[0].usuario_r4,
+        r5: resultados[0].usuario_r5,
+        r6: resultados[0].usuario_r6,
+        r7: resultados[0].usuario_r7
+      },
+      arteMarcial: {
+        nome: resultados[0].arte_nome,
+        desc: resultados[0].arte_desc, 
+        r1: resultados[0].arte_r1,
+        r2: resultados[0].arte_r2,
+        r3: resultados[0].arte_r3,
+        r4: resultados[0].arte_r4,
+        r5: resultados[0].arte_r5,
+        r6: resultados[0].arte_r6,
+        r7: resultados[0].arte_r7
+      }
+     };
+    
+    res.status(200).json([dadosGrafico]); 
+  } catch (error) {
+    console.error("Erro ao buscar respostas:", error);
+    res.status(500).json({ error: "Erro interno do servidor." });
   }
 };

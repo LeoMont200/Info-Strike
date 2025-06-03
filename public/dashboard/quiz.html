@@ -19,21 +19,21 @@
         <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </head>
-    
-    <body>
-        <div class="container_quiz">
-            <div class="navbar">
-                <div class="logo_navbar">
-                    <img src="../assets/imgs/Logo.png" alt="">
-                </div>
-                <div class="items_navbar">
-                    <a href="home.html">Home</a>
-                    <a href="sobre.html">Sobre</a>
-                    <a href="quiz.html">Quiz</a>
-                    <a href="perfil.html">Perfil</a>
-                </div>
-                <div class="buttons_navbar">
-                    <a class="btn_exit" href="../index.html"> <img src="../assets/imgs/arrow-left-svgrepo-com.svg"
+
+<body>
+    <div class="container_quiz">
+        <div class="navbar">
+            <div class="logo_navbar">
+                <img src="../assets/imgs/Logo.png" alt="">
+            </div>
+            <div class="items_navbar">
+                <a href="home.html">Home</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="perfil.html">Perfil</a>
+            </div>
+            <div class="buttons_navbar">
+                <a class="btn_exit" href="../index.html"> <img src="../assets/imgs/arrow-left-svgrepo-com.svg"
                         alt=""></a>
             </div>
         </div>
@@ -41,7 +41,7 @@
             window.addEventListener('scroll', () => {
                 const navbar = document.querySelector('.navbar');
                 const placar = document.querySelector('.scoreboard .card');
-                
+
                 if (window.scrollY > 50) {
                     navbar.classList.add('scrolled');
                     placar.classList.add('show_on_scroll');
@@ -71,10 +71,13 @@
                                         <span class="load"></span>
                                     </span>
                                 </span>
-                                <span class="score_container">
-                                    <span class="score_home">1</span>
-                                    <span class="custom_sep">-</span>
-                                    <span class="score_away">1</span>
+                                <span class="score_container"
+                                    style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
+                                    <span class="score_home" id="fulano"
+                                        style="font-size: 25px; font-weight: bold;">0</span>
+                                    <span class="score_spliter" style="font-size: 25px; font-weight: bold;">-</span>
+                                    <span class="score_away" id="ciclano"
+                                        style="font-size: 25px; font-weight: bold;">0</span>
                                 </span>
                             </span>
                         </span>
@@ -97,14 +100,25 @@
                     <span class="glow2"></span>
                     <span class="glow3"></span>
                 </div>
-                
+
                 <h1>Por Onde Começar?</h1>
                 <p>
                     Clique aqui e descubra qual arte marcial mais combina com você.
                 </p>
             </div>
-        </div>
+           
     </div>
+        <script>
+        (function atualizarPlacar() {
+            fulano.innerHTML =
+                parseInt(Math.random() * 5);
+
+            ciclano.innerHTML =
+                parseInt(Math.random() * 5);
+
+            setTimeout(atualizarPlacar, 5000);
+        })();
+    </script>
 </body>
 
 </html>
