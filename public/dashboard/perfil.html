@@ -90,8 +90,11 @@
       <div class="perfil_grid"></div>
       <div class="perfil_chart">
         <div class="perfil_left_side">
-          <!-- CARD 1 -->
+          <!-- KPI 1 -->
           <div class="KPI_content">
+            <span style="font-family: 'bebas Neue', sans-serif; font-size: 40px; color: rgb(175, 0, 0); z-index: 1000;
+                width: 20vw; margin-bottom: 2vh;margin-left: 7.5vw;
+                ">Tipo:</span>
             <div class="KPI_container">
               <div class="KPI_canvas">
                 <!-- 25 trackers -->
@@ -145,17 +148,17 @@
                     <div class="KPI_line"></div>
                     <div class="KPI_line"></div>
                   </div>
-                  <div class="KPI_title">Desenvolvimento Pessoal</div>
-                  <div class="KPI_subtitle">Por incrível que pareça, lutar te faz ser uma pessoa mais
-                    calma, estratégica, que sabe agir bem sob pressão. Enquanto te ensina a estar
-                    confortável em situações disconfortáveis</div>
+                  <div class="KPI_title" id="KPITipo"></div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- CARD 2 -->
+          <!-- KPI 2 -->
           <div class="KPI_content">
+            <span style="font-family: 'bebas Neue', sans-serif; font-size: 40px; color: rgb(175, 0, 0); z-index: 1000;
+                width: 20vw; margin-bottom: 2vh;margin-left: 5vw;
+                ">Tendência:</span>
             <div class="KPI_container">
               <div class="KPI_canvas">
                 <!-- 25 trackers -->
@@ -209,12 +212,7 @@
                     <div class="KPI_line"></div>
                     <div class="KPI_line"></div>
                   </div>
-                  <div class="KPI_title">Saúde Mental</div>
-                  <div class="KPI_subtitle">Desenvolve sua parte motora, cognitiva, emocional e
-                    comportamental.
-                    Lutar serve como uma válvula de escape para o estresse do dia a dia, além de desenvolver
-                    seus reflexos e coordenação motora.
-                  </div>
+                  <div class="KPI_title" id="KPITendencia"></div>
                 </div>
               </div>
             </div>
@@ -222,13 +220,22 @@
         </div>
         <div class="perfil_mid_side">
           <div class="titulo">
-            <p>Seu Perfil de Arte Marcial</p>
+            <p id="tituloP"></p>
+          </div>
+          <div class="labels_grafico">
+            <span>Você:</span>
+            <div class="label_user"></div>
+            <span id="arteLabel"></span>
+            <div class="label_arte"></div>
           </div>
           <canvas id="graficoRadar"></canvas>
         </div>
         <div class="perfil_right_side">
-          <!-- CARD 2 -->
+          <!-- KPI3 -->
           <div class="KPI_content">
+                <span style="font-family: 'bebas Neue', sans-serif; font-size: 40px; color: rgb(175, 0, 0); z-index: 1000;
+                width: 20vw; margin-bottom: 2vh;margin-left: 3vw;
+                ">País de Origem:</span>
             <div class="KPI_container">
               <div class="KPI_canvas">
                 <!-- 25 trackers -->
@@ -258,7 +265,7 @@
                 <div class="KPI_tracker tr_24"></div>
                 <div class="KPI_tracker tr_25"></div>
 
-                <!-- CARD -->
+                <!-- card -->
                 <div id="KPI_card">
                   <div class="KPI_glare"></div>
                   <div class="KPI_glow_wrap">
@@ -282,12 +289,7 @@
                     <div class="KPI_line"></div>
                     <div class="KPI_line"></div>
                   </div>
-                  <div class="KPI_title">Saúde Mental</div>
-                  <div class="KPI_subtitle">Desenvolve sua parte motora, cognitiva, emocional e
-                    comportamental.
-                    Lutar serve como uma válvula de escape para o estresse do dia a dia, além de desenvolver
-                    seus reflexos e coordenação motora.
-                  </div>
+                  <div class="KPI_title" id="tituloPais"></div>
                 </div>
               </div>
             </div>
@@ -320,7 +322,17 @@
             const dadosArteMarcial = respostas[0].arteMarcial;
             const nomeArteMarcial = dadosArteMarcial.nome;
             const descArteMarcial = dadosArteMarcial.desc;
+            const paisArteMarcial = dadosArteMarcial.pais;
+            const tendArteMarcial = dadosArteMarcial.tend;
+            const tipoArteMarcial = dadosArteMarcial.tipo;
+
+            KPITipo.innerHTML = dadosArteMarcial.tipo
+            KPITendencia.innerHTML = dadosArteMarcial.tend
             descArte.innerHTML = dadosArteMarcial.desc;
+            tituloPais.innerHTML = dadosArteMarcial.pais;
+            arteLabel.innerHTML =`${dadosArteMarcial.nome}:`;
+            tituloP.innerHTML = `Comparação Entre Você e o ${dadosArteMarcial.nome} `;
+
 
 
             const criterios = [

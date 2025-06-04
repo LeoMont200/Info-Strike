@@ -1512,7 +1512,7 @@ input:valid~label {
   transform: skewX(10deg);
   transition: .4s;
   overflow: hidden;
-  color: white;
+  color: rgb(50, 50, 50);
   z-index: 100;
   --glow-color: rgb(234, 52, 52);
   --glow-spread-color: rgba(50, 32, 212, 0.781);
@@ -1538,7 +1538,7 @@ input:valid~label {
   text-align: center;
   font-family: "Bebas Neue", sans-serif;
   font-size: 4rem;
-  color: white;
+  color: rgb(40, 39, 39);
   transition: transform 0.5s ease;
   z-index: 100;
 }
@@ -1550,7 +1550,7 @@ input:valid~label {
   width: 80%;
   font-family: "Share Tech", sans-serif;
   font-size: 3rem;
-  color: #fff;
+  color: #0e0e0e;
   line-height: 1.2;
   transition: left 0.7s ease;
   z-index: 1000;
@@ -1626,27 +1626,28 @@ input:valid~label {
   text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573);
 }
 
+.perg_page {
+  display: flex;
+  justify-content: center;
+}
 
-
-.container_perg_back {
+.perg_card {
   font-family: 'Share Tech', sans-serif;
-  background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: fit-content;
   max-width: 600px;
-  justify-self: center;
-  align-self: center;
+
 }
 
 .container_perg .perg {
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 15px;
-  color: #333;
+  color: #f1ebeb;
 }
-
+  
 .container_perg .option {
   margin-bottom: 10px;
 }
@@ -1654,14 +1655,14 @@ input:valid~label {
 .container_perg .option label {
   display: block;
   padding: 10px;
-  background-color: #e9e9e9;
+  background-color: #b31919;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .container_perg .option label:hover {
-  background-color: #dcdcdc;
+  background-color: #760101;
 }
 
 .container_perg .option input[type="radio"] {
@@ -1672,7 +1673,7 @@ input:valid~label {
   display: block;
   width: 100%;
   padding: 12px;
-  background-color: #007bff;
+  background-color: #1300c2;
   color: white;
   border: none;
   border-radius: 5px;
@@ -1683,44 +1684,175 @@ input:valid~label {
 }
 
 .container_perg button:hover {
-  background-color: #0056b3;
+  background-color: #000054;
+}
+
+.container_perg {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.container_perg_cards {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #111, #1a1a1a);
+  border-top: 1px solid #333;
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  overflow: hidden;
+
+}
+
+
+.container_perg_cards::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--glow-color), transparent);
+  animation: perg_scan 8s linear infinite;
+  z-index: 10;
+}
+
+@keyframes perg_scan {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.perg_glow {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(360deg, rgba(86, 0, 0, 0.888) 30%, rgba(0, 0, 0, 0.937) 50%, rgba(2, 1, 65, 0.811) 70%);
+  z-index: 99;
+}
+
+.perg_grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.267) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.267) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  z-index: 100;
+}
+
+.perg_card {
+  width: 50vw;
+  height: 70vh;
+  max-width: 600px;
+  max-height: 600px;
+  padding: 0.5rem;
+  background: rgba(28, 28, 28, 0.796);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.440);
+  border-left: 2px rgba(255, 255, 255, 0.545) outset;
+  box-shadow: -40px 50px 30px rgba(0, 0, 0, 0.280);
+  transform: skewX(5deg);
+  transition: .4s;
+  overflow: hidden;
+  color: white;
+
+  z-index: 100;
+  --glow-color: rgb(234, 52, 52);
+  --glow-spread-color: rgba(50, 32, 212, 0.781);
+  --enhanced-glow-color: rgb(211, 206, 255);
+  box-shadow: 0 0 1em .20em var(--glow-color),
+    0 0 3em .5em var(--glow-spread-color),
+    inset 0 0 .70em .20em var(--glow-color);
+  text-shadow: 0 0 .15em var(--glow-color);
+}
+
+
+
+
+.perg_card h1 {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4rem;
+  color: rgb(244, 235, 235);
+  transition: transform 0.5s ease;
+  z-index: 100;
+}
+
+.perg_card p {
+  position: absolute;
+  left: -800px;
+  bottom: 30%;
+  width: 80%;
+  font-family: "Share Tech", sans-serif;
+  font-size: 3rem;
+  color: #e6d2d2;
+  line-height: 1.2;
+  transition: left 0.7s ease;
+  z-index: 1000;
+}
+
+
+
+.perg_card h1 {
+  text-align: center;
+  margin: 1.3rem;
+  color: rgb(218, 244, 237);
+  text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573);
 }
 
 .result {
-  font-size: 1.3em;
+  font-size: 2.4em;
   text-align: center;
   margin-bottom: 20px;
-  color: #28a745;
+  color: #dc0101;
+  justify-self: center;
+  align-self: center;
 }
 
 .result_opcoes {
   text-align: center;
+  justify-self: center;
+  align-self: center;
 }
 
 .result_opcoes a {
+  width: 8vw;
+  height: 5vh;
   margin: 0 10px;
   padding: 10px 15px;
-  background-color: #6c757d;
+  background-color: #030d79;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: background-color 0.3s;
+  justify-self: center;
+  align-self: center;
+  font-size: 25px;
 }
 
 .result_opcoes a:hover {
-  background-color: #6a7379;
+  background-color: #8e0000;
 }
 
-.custom-alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-  text-align: center;
-}
 
 /*perfil page*/
 
@@ -1971,7 +2103,7 @@ input:valid~label {
   width: 80%;
   text-align: center;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 1.6rem;
+  font-size: 3.7rem;
   background: rgb(173, 9, 9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1979,27 +2111,6 @@ input:valid~label {
   z-index: 100;
 }
 
-.KPI_subtitle {
-  position: absolute;
-  bottom: -152px;
-  left: 10%;
-  width: 80%;
-  font-family: "Share Tech", sans-serif;
-  font-size: .9rem;
-  color: #fff;
-  text-align: center;
-  line-height: 1.2;
-  transition: bottom 0.4s ease;
-  z-index: 4;
-}
-
-.KPI_container:hover .KPI_title {
-  transform: translate(-50%, -130px);
-}
-
-.KPI_container:hover .KPI_subtitle {
-  bottom: 50px;
-}
 
 .KPI_lines {
   position: absolute;
@@ -2055,10 +2166,9 @@ input:valid~label {
 
 .tr_7:hover~#KPI_card {
   transform: rotateX(10deg) rotateY(-5deg);
-}3
+}
 
-
-.tr_8:hover~#KPI_card {
+3 .tr_8:hover~#KPI_card {
   transform: rotateX(10deg) rotateY(0deg);
 }
 
@@ -2070,38 +2180,39 @@ input:valid~label {
   transform: rotateX(10deg) rotateY(10deg);
 }
 
-.text_desc_perfil h2{
+.text_desc_perfil h2 {
   font-size: 35px;
 }
 
-.text_desc_perfil p{
+.text_desc_perfil p {
   width: 20vw;
   font-size: 25px;
 }
 
-.perfil_right_side{
+.perfil_right_side {
   display: flex;
   gap: 10vh;
   width: 25vw;
   flex-direction: column;
-  color:white;
+  color: white;
   font-family: "share tech", sans-serif;
   font-size: 1em;
 }
 
-.perfil_left_side{
-width: 25vw;
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 10vh;
+.perfil_left_side {
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10vh;
 }
 
-.perfil_mid_side{
-  width:50vw;
+.perfil_mid_side {
+  width: 50vw;
   height: 100vh;
 }
-.perfil_container{
+
+.perfil_container {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -2116,4 +2227,31 @@ gap: 10vh;
   --enhanced-glow-color: rgb(211, 206, 255);
 }
 
+.labels_grafico {
+  display: flex;
+  flex-direction: row;
+  font-family: 'bebas neue', sans-serif;
+  font-size: 20px;
+  gap: 2vw;
+  justify-content: center;
+  padding-bottom: 2vh;
+  color: white;
+}
 
+.label_user {
+  height: 3vh;
+  width: 3vw;
+  background-color: rgb(175, 0, 0);
+  border-radius: 20px;
+  border-color: black;
+  border-style: outset;
+}
+
+.label_arte {
+  height: 3vh;
+  width: 3vw;
+  background-color: rgb(0, 0, 175);
+  border-radius: 20px;
+  border-color: black;
+  border-style: outset;
+}

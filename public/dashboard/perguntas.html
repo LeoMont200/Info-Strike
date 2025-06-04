@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title> Quiz - Info-Strike</title>
+    <title> perg - Info-Strike</title>
     <link rel="icon" href="../assets/imgs/logo small.png">
     <link rel="stylesheet" href="../css/estilo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,188 +16,265 @@
 </head>
 
 <body>
-    <div class="container_perg_back">
-        <div class="container_perg" id="container_perg">
-            <div id="customAlertBox" class="custom-alert" style="display: none;"></div>
-        </div>
+    <div class="perg_page">
+            <div class="navbar">
+                <div class="logo_navbar">
+                    <img src="../assets/imgs/Logo.png" alt="">
+                </div>
+                <div class="items_navbar">
+                    <a href="home.html">Home</a>
+                    <a href="sobre.html">Sobre</a>
+                    <a href="quiz.html">Quiz</a>
+                    <a href="perfil.html">Perfil</a>
+                </div>
+                <div class="buttons_navbar">
+                    <a class="btn_exit" href="../index.html"> <img src="../assets/imgs/arrow-left-svgrepo-com.svg"
+                            alt=""></a>
+                </div>
+            </div>
+            <script>
+                window.addEventListener('scroll', () => {
+                    const navbar = document.querySelector('.navbar');
+                    const placar = document.querySelector('.scoreboard .card');
 
-        <script>
-            let melhorEstilo = null;
-
-            const perguntas = [
-                {
-                    text: "1.Qual estilo de combate mais te atrai?",
-                    options: [
-                        { label: "Socos que parecem tiros de canhão com jogo de pés estratégico", value: 0 },
-                        { label: "Socos, chutes, cotoveladas e joelhadas. Te fazendo se tornar uma arma viva", value: 20 },
-                        { label: "Golpes rápidos e elegantes, sem dar oportunidade do oponente entender o que está acontecendo", value: 40 },
-                        { label: "Técnicas para derrubar e desequilibrar e arremessar o oponente. Sendo capaz de fazer o oponente voar com seus arremessos", value: 60 },
-                        { label: "Imobilizar e finalizar no chão como uma cobra caçando sua presa", value: 80 },
-                        { label: "Arremessar, esmagar e imobilizar seu oponente, dominando a luta", value: 100 }
-                    ]
-                },
-                {
-                    text: "2.Qual distância de combate você prefere?",
-                    options: [
-                        { label: "Curta, muito contato", value: 0 },
-                        { label: "Média, podendo usar socos e chutes, mas usando clinch, cotoveladas e joelhadas quando a distância encurtar", value: 20 },
-                        { label: "Longa, com chutes", value: 100 },
-                        { label: "Média-longa, com esquivas e golpes rápidos", value: 80 },
-                        { label: "Média-curta, com quedas", value: 40 },
-                        { label: "Curtíssima, no chão", value: 10 }
-                    ]
-                },
-                {
-                    text: "3.O que mais importa para você em uma luta?",
-                    options: [
-                        { label: "Derrubar e controlar", value: 100 },
-                        { label: "Finalizar e ser eficiente", value: 80 },
-                        { label: "Golpear com potência", value: 30 },
-                        { label: "Golpes preciso e limpos", value: 60 },
-                        { label: "Técnica e respeito à tradição", value: 40 }
-                    ]
-                },
-                {
-                    text: "4.Você prefere uma arte marcial mais...",
-                    options: [
-                        { label: "Prática e realista", value: 100 },
-                        { label: "Com tradição e disciplina", value: 0 },
-                        { label: "Agressiva e direta ao ponto", value: 60 },
-                        { label: "Equilibrada e defensiva", value: 80 }
-                    ]
-                },
-                {
-                    text: "5.O que você valoriza em uma arte marcial?",
-                    options: [
-                        { label: "Tradição e filosofia", value: 0 },
-                        { label: "Eficiência em combate", value: 100 },
-                        { label: "Disciplina física e mental", value: 60 },
-                        { label: "Praticidade para defesa pessoal", value: 80 }
-                    ]
-                },
-                {
-                    text: "6.Como você prefere vencer uma luta?",
-                    options: [
-                        { label: "Nocauteando o oponente", value: 50 },
-                        { label: "Controlando até a imobilização", value: 70 },
-                        { label: "Ganhar sem sofrer um arranhão", value: 20 },
-                        { label: "Finalizando o oponente com um enforcamento ou chave de braço", value: 100 }
-                    ]
-                },
-                {
-                    text: "7.Qual estilo de aprendizado te atrai mais?",
-                    options: [
-                        { label: "Tradições, disciplina e regras rígidas", value: 0 },
-                        { label: "Repetição de técnica", value: 20 },
-                        { label: "Treino com poucos ajustes", value: 40 },
-                        { label: "Treino com mais variações e com alguns improvisos", value: 60 },
-                        { label: "Treino totalmente livre e improvisado", value: 80 },
-                        { label: "Funcional e direto, sem floreios", value: 100 }
-                    ]
-                },
-                {
-                    text: "8.O que você espera aprender com uma arte marcial?",
-                    options: [
-                        { label: "Autocontrole e paz interna", value: 0 },
-                        { label: "Foco e disciplina", value: 20 },
-                        { label: "Técnica e equilíbrio", value: 40 },
-                        { label: "Resistência e ritmo", value: 60 },
-                        { label: "Aplicabilidade real", value: 80 },
-                        { label: "Estratégia e controle", value: 90 },
-                        { label: "Força e dominancia física", value: 100 }
-                    ]
-                },
-                {
-                    text: "9.Em que tipo de golpe você quer se especializar?",
-                    options: [
-                        { label: "Chutes poderosos e certeiros", value: 0 },
-                        { label: "Socos bem dados", value: 20 },
-                        { label: "Quero ficar bom com todo e qualquer tipo de golpe de trocação", value: 40 },
-                        { label: "Arremessos e rasteiras", value: 60 },
-                        { label: "Imobilizações e finalizações", value: 80 },
-                        { label: "Imobilizações e arremessos", value: 100 },
-                        { label: "Socos e chutes rápidos invés de fortes", value: 50 }
-                    ]
-                },
-                {
-                    text: "10. Em que tipo de ambiente você se sente mais motivado para treinar?",
-                    options: [
-                        { label: "Com metas claras e progresso rápido", value: 0 },
-                        { label: "Ambiente calmo e disciplinado, com foco técnico", value: 20 },
-                        { label: "Dinâmico, com desafios técnicos constantes", value: 40 },
-                        { label: "Treinos intensos e exigentes, com clima de superação", value: 60 },
-                        { label: "Aulas estruturadas com foco em técnica e repetição", value: 70 },
-                        { label: "Espaço colaborativo, onde se aprende errando e corrigindo", value: 90 },
-                        { label: "Ambiente competitivo, onde todos se empurram ao limite", value: 100 }
-                    ]
-                }
-            ]
-
-            const estilos = {
-                "Boxe": [0, 0, 30, 60, 30, 40, 40, 60, 50, 40],
-                "Muay Thai": [20, 20, 30, 60, 50, 60, 60, 70, 40, 60],
-                "Taekwondo": [40, 100, 60, 20, 50, 0, 40, 20, 0, 20],
-                "Karatê": [60, 80, 40, 0, 60, 20, 0, 10, 0, 30],
-                "Judô": [60, 40, 100, 80, 80, 70, 75, 40, 60, 70],
-                "Jiu-Jitsu Brasileiro (BJJ)": [80, 10, 80, 100, 60, 100, 90, 90, 80, 90],
-                "Wrestling": [100, 0, 100, 100, 80, 100, 100, 100, 100, 100]
-            }
-
-
-
-
-            let perguntaAtual = 0;
-            const respostasResult = [];
-
-            const criteriosPorPergunta = [
-                "r1", // P1
-                "r2", // P2
-                "r3", // P3
-                "r4", // P4 
-                "ignorar", // P5
-                "r5", // P6
-                "r6", // P7
-                "ignorar", // P8
-                "r7", // P9
-                "ignorar"  // P10
-            ];
-
-            function extrairCriterios(respostasResult, criteriosPorPergunta) {
-                const criterios = {};
-
-                for (let i = 0; i < respostasResult.length; i++) {
-                    const criterio = criteriosPorPergunta[i];
-                    if (criterio && criterio !== "ignorar") {
-                        criterios[criterio] = respostasResult[i];
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                        placar.classList.add('show_on_scroll');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                        placar.classList.remove('show_on_scroll');
                     }
-                }
+                });
+            </script>
+            <div class="scoreboard">
+                <div class="card hidden_on_top">
+                    <div class="card">
+                        <div data-status="inprogress" class="teams">
+                            <span class="team_info team_home">
+                                <span class="team_info_container">
+                                    <span class="team_name_info">Fulano</span>
+                                </span>
+                            </span>
+                            <span class="event_scoreboard">
+                                <span class="event_score_container">
+                                    <span class="current_time_container">
+                                        <span class="event_current_time">
+                                            <span class="event_clock">3:42</span>
+                                            <span class="current_part">3rd Round</span>
+                                        </span>
+                                        <span class="progress_dots" data-progress="1S">
+                                            <span class="load"></span>
+                                        </span>
+                                    </span>
+                                    <span class="score_container"
+                                        style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
+                                        <span class="score_home" id="fulano"
+                                            style="font-size: 25px; font-weight: bold;">0</span>
+                                        <span class="score_spliter" style="font-size: 25px; font-weight: bold;">-</span>
+                                        <span class="score_away" id="ciclano"
+                                            style="font-size: 25px; font-weight: bold;">0</span>
+                                    </span>
+                                </span>
+                            </span>
+                            <span class="team_info team_away">
+                                <span class="team_info_container">
+                                    <span class="team_icon_container"></span>
+                                    <span class="team_name_info">Ciclano</span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="perg_glow"></div>
+            <div class="perg_grid"></div>
+                <div class="perg_card" style="margin-top: 20vh;">
+                    <div class="balls">
+                        <span class="glow1"></span>
+                        <span class="glow2"></span>
+                        <span class="glow3"></span>
+                    </div>
 
-                return criterios;
-            }
-            const fkusuario = parseInt(sessionStorage.ID_USUARIO, 10);
+                        <div class="container_perg" id="container_perg">
+                    </div>
+                    <script>
+                        let melhorEstilo = null;
 
-            function mostrarResultado() {
-                const vt_result = respostasResult;
-                let menorDistancia = Infinity;
+                        const perguntas = [
+                            {
+                                text: "1. Qual estilo de combate mais te atrai?",
+                                options: [
+                                    { label: "Socos que parecem tiros de canhão com jogo de pés estratégico", value: 0 },
+                                    { label: "Socos, chutes, cotoveladas e joelhadas. Te fazendo se tornar uma arma viva", value: 20 },
+                                    { label: "Golpes rápidos e elegantes, sem dar oportunidade do oponente entender o que está acontecendo", value: 40 },
+                                    { label: "Técnicas para derrubar e desequilibrar e arremessar o oponente. Sendo capaz de fazer o oponente voar com seus arremessos", value: 60 },
+                                    { label: "Imobilizar e finalizar no chão como uma cobra caçando sua presa", value: 80 },
+                                    { label: "Arremessar, esmagar e imobilizar seu oponente, dominando a luta", value: 100 }
+                                ]
+                            },
+                            {
+                                text: "2. Qual distância de combate você prefere?",
+                                options: [
+                                    { label: "Curta, muito contato", value: 0 },
+                                    { label: "Média, podendo usar socos e chutes, mas usando clinch, cotoveladas e joelhadas quando a distância encurtar", value: 20 },
+                                    { label: "Longa, com chutes", value: 100 },
+                                    { label: "Média-longa, com esquivas e golpes rápidos", value: 80 },
+                                    { label: "Média-curta, com quedas", value: 40 },
+                                    { label: "Curtíssima, no chão", value: 10 }
+                                ]
+                            },
+                            {
+                                text: "3. O que mais importa para você em uma luta?",
+                                options: [
+                                    { label: "Derrubar e controlar", value: 100 },
+                                    { label: "Finalizar e ser eficiente", value: 80 },
+                                    { label: "Golpear com potência", value: 30 },
+                                    { label: "Golpes preciso e limpos", value: 60 },
+                                    { label: "Técnica e respeito à tradição", value: 40 }
+                                ]
+                            },
+                            {
+                                text: "4. Você prefere uma arte marcial mais...",
+                                options: [
+                                    { label: "Prática e realista", value: 100 },
+                                    { label: "Com tradição e disciplina", value: 0 },
+                                    { label: "Agressiva e direta ao ponto", value: 60 },
+                                    { label: "Equilibrada e defensiva", value: 80 }
+                                ]
+                            },
+                            {
+                                text: "5. O que você valoriza em uma arte marcial?",
+                                options: [
+                                    { label: "Tradição e filosofia", value: 0 },
+                                    { label: "Eficiência em combate", value: 100 },
+                                    { label: "Disciplina física e mental", value: 60 },
+                                    { label: "Praticidade para defesa pessoal", value: 80 }
+                                ]
+                            },
+                            {
+                                text: "6. Como você prefere vencer uma luta?",
+                                options: [
+                                    { label: "Nocauteando o oponente", value: 50 },
+                                    { label: "Controlando até a imobilização", value: 70 },
+                                    { label: "Ganhar sem sofrer um arranhão", value: 20 },
+                                    { label: "Finalizando o oponente com um enforcamento ou chave de braço", value: 100 }
+                                ]
+                            },
+                            {
+                                text: "7. Qual estilo de aprendizado te atrai mais?",
+                                options: [
+                                    { label: "Tradições, disciplina e regras rígidas", value: 0 },
+                                    { label: "Repetição de técnica", value: 20 },
+                                    { label: "Treino com poucos ajustes", value: 40 },
+                                    { label: "Treino com mais variações e com alguns improvisos", value: 60 },
+                                    { label: "Treino totalmente livre e improvisado", value: 80 },
+                                    { label: "Funcional e direto, sem floreios", value: 100 }
+                                ]
+                            },
+                            {
+                                text: "8. O que você espera aprender com uma arte marcial?",
+                                options: [
+                                    { label: "Autocontrole e paz interna", value: 0 },
+                                    { label: "Foco e disciplina", value: 20 },
+                                    { label: "Técnica e equilíbrio", value: 40 },
+                                    { label: "Resistência e ritmo", value: 60 },
+                                    { label: "Aplicabilidade real", value: 80 },
+                                    { label: "Estratégia e controle", value: 90 },
+                                    { label: "Força e dominancia física", value: 100 }
+                                ]
+                            },
+                            {
+                                text: "9. Em que tipo de golpe você quer se especializar?",
+                                options: [
+                                    { label: "Chutes poderosos e certeiros", value: 0 },
+                                    { label: "Socos bem dados", value: 20 },
+                                    { label: "Quero ficar bom com todo e qualquer tipo de golpe de trocação", value: 40 },
+                                    { label: "Arremessos e rasteiras", value: 60 },
+                                    { label: "Imobilizações e finalizações", value: 80 },
+                                    { label: "Imobilizações e arremessos", value: 100 },
+                                    { label: "Socos e chutes rápidos invés de fortes", value: 50 }
+                                ]
+                            },
+                            {
+                                text: "10. Em que tipo de ambiente você se sente mais motivado para treinar?",
+                                options: [
+                                    { label: "Com metas claras e progresso rápido", value: 0 },
+                                    { label: "Ambiente calmo e disciplinado, com foco técnico", value: 20 },
+                                    { label: "Dinâmico, com desafios técnicos constantes", value: 40 },
+                                    { label: "Treinos intensos e exigentes, com clima de superação", value: 60 },
+                                    { label: "Aulas estruturadas com foco em técnica e repetição", value: 70 },
+                                    { label: "Espaço colaborativo, onde se aprende errando e corrigindo", value: 90 },
+                                    { label: "Ambiente competitivo, onde todos se empurram ao limite", value: 100 }
+                                ]
+                            }
+                        ]
 
-                for (const estilo in estilos) {
-                    const vt_analisador = estilos[estilo];
-                    let distancia = 0;
+                        const estilos = {
+                            "Boxe": [0, 0, 30, 60, 30, 40, 40, 60, 50, 40],
+                            "Muay Thai": [20, 20, 30, 60, 50, 60, 60, 70, 40, 60],
+                            "Taekwondo": [40, 100, 60, 20, 50, 0, 40, 20, 0, 20],
+                            "Karatê": [60, 80, 40, 0, 60, 20, 0, 10, 0, 30],
+                            "Judô": [60, 40, 100, 80, 80, 70, 75, 40, 60, 70],
+                            "Jiu-Jitsu Brasileiro (BJJ)": [80, 10, 80, 100, 60, 100, 90, 90, 80, 90],
+                            "Wrestling": [100, 0, 100, 100, 80, 100, 100, 100, 100, 100]
+                        }
 
-                    for (let i = 0; i < vt_analisador.length; i++) {
-                        const diferenca = vt_analisador[i] - vt_result[i];
-                        distancia += diferenca * diferenca;
-                    }
 
-                    if (distancia < menorDistancia) {
-                        menorDistancia = distancia;
-                        melhorEstilo = estilo;
-                    }
-                }
 
-                
 
-            document.getElementById("container_perg").innerHTML = `
+                        let perguntaAtual = 0;
+                        const respostasResult = [];
+
+                        const criteriosPorPergunta = [
+                            "r1", // P1
+                            "r2", // P2
+                            "r3", // P3
+                            "r4", // P4 
+                            "ignorar", // P5
+                            "r5", // P6
+                            "r6", // P7
+                            "ignorar", // P8
+                            "r7", // P9
+                            "ignorar"  // P10
+                        ];
+
+                        function extrairCriterios(respostasResult, criteriosPorPergunta) {
+                            const criterios = {};
+
+                            for (let i = 0; i < respostasResult.length; i++) {
+                                const criterio = criteriosPorPergunta[i];
+                                if (criterio && criterio !== "ignorar") {
+                                    criterios[criterio] = respostasResult[i];
+                                }
+                            }
+
+                            return criterios;
+                        }
+                        const fkusuario = parseInt(sessionStorage.ID_USUARIO, 10);
+
+                        function mostrarResultado() {
+                            const vt_result = respostasResult;
+                            let menorDistancia = Infinity;
+
+                            for (const estilo in estilos) {
+                                const vt_analisador = estilos[estilo];
+                                let distancia = 0;
+
+                                for (let i = 0; i < vt_analisador.length; i++) {
+                                    const diferenca = vt_analisador[i] - vt_result[i];
+                                    distancia += diferenca * diferenca;
+                                }
+
+                                if (distancia < menorDistancia) {
+                                    menorDistancia = distancia;
+                                    melhorEstilo = estilo;
+                                }
+                            }
+
+
+
+                            document.getElementById("container_perg").innerHTML = `
                         <div class="result">A arte marcial que mais combina com você é: <strong>${melhorEstilo}</strong>!</div>
                         <div class="result_opcoes">
                             <a href="home.html">Home</a>
@@ -205,59 +282,59 @@
                             <a href="perfil.html">Perfil</a>
                         </div>
                         `;
-            }
+                        }
 
 
-            function enviarRespostas(respostasResult) {
-                const criterios = extrairCriterios(respostasResult, criteriosPorPergunta);
-                let fkestilo;
-                if (melhorEstilo === 'Boxe') {
-                    fkestilo = 1;
-                } else if (melhorEstilo === 'Muay Thai') {
-                    fkestilo = 2;
-                } else if (melhorEstilo === 'Taekwondo') {
-                    fkestilo = 3;
-                } else if (melhorEstilo === 'Karatê') {
-                    fkestilo = 4;
-                } else if (melhorEstilo === 'Judô') {
-                    fkestilo = 5;
-                } else if (melhorEstilo === 'Jiu-Jitsu Brasileiro (BJJ)') {
-                    fkestilo = 6;
-                } else if (melhorEstilo === 'Wrestling') {
-                    fkestilo = 7;
-                } else {
-                    fkestilo = null;
-                }
+                        function enviarRespostas(respostasResult) {
+                            const criterios = extrairCriterios(respostasResult, criteriosPorPergunta);
+                            let fkestilo;
+                            if (melhorEstilo === 'Boxe') {
+                                fkestilo = 1;
+                            } else if (melhorEstilo === 'Muay Thai') {
+                                fkestilo = 2;
+                            } else if (melhorEstilo === 'Taekwondo') {
+                                fkestilo = 3;
+                            } else if (melhorEstilo === 'Karatê') {
+                                fkestilo = 4;
+                            } else if (melhorEstilo === 'Judô') {
+                                fkestilo = 5;
+                            } else if (melhorEstilo === 'Jiu-Jitsu Brasileiro (BJJ)') {
+                                fkestilo = 6;
+                            } else if (melhorEstilo === 'Wrestling') {
+                                fkestilo = 7;
+                            } else {
+                                fkestilo = null;
+                            }
 
-                console.log(fkestilo)
-                fetch("/respostas/enviarRespostas", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        fkusuario: fkusuario,
-                        fkestilo: fkestilo,
-                        r1: criterios.r1,
-                        r2: criterios.r2,
-                        r3: criterios.r3,
-                        r4: criterios.r4,
-                        r5: criterios.r5,
-                        r6: criterios.r6,
-                        r7: criterios.r7
-                    })
-                });
-            }
+                            console.log(fkestilo)
+                            fetch("/respostas/enviarRespostas", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    fkusuario: fkusuario,
+                                    fkestilo: fkestilo,
+                                    r1: criterios.r1,
+                                    r2: criterios.r2,
+                                    r3: criterios.r3,
+                                    r4: criterios.r4,
+                                    r5: criterios.r5,
+                                    r6: criterios.r6,
+                                    r7: criterios.r7
+                                })
+                            });
+                        }
 
 
-            function exibirPerguntas() {
-                const perg = perguntas[perguntaAtual];
-                const container = document.getElementById("container_perg");
-                let conteudo = `<div class="perg">${perg.text}</div>`;
+                        function exibirPerguntas() {
+                            const perg = perguntas[perguntaAtual];
+                            const container = document.getElementById("container_perg");
+                            let conteudo = `<div class="perg">${perg.text}</div>`;
 
-                for (let i = 0; i < perg.options.length; i++) {
-                    const opt = perg.options[i];
-                    conteudo += `
+                            for (let i = 0; i < perg.options.length; i++) {
+                                const opt = perg.options[i];
+                                conteudo += `
                                 <div class="option">
                                     <label>
                                         <input type="radio" name="option" value="${opt.value}">
@@ -265,36 +342,38 @@
                                     </label>
                                 </div>
                             `;
-                }
+                            }
 
-                conteudo += `<button onclick="proximo()">Próximo</button>`;
-                container.innerHTML = conteudo;
-            }
+                            conteudo += `<button onclick="proximo()">Próximo</button>`;
+                            container.innerHTML = conteudo;
+                        }
 
-            function proximo() {
-                const selecionado = document.querySelector("input[name='option']:checked");
-                if (!selecionado) {
-                    alert("Por favor, selecione uma opção para continuar.");
-                    return;
-                }
-                respostasResult.push(parseInt(selecionado.value));
-                perguntaAtual++;
-                if (perguntaAtual < perguntas.length) {
-                    exibirPerguntas();
-                } else {
-                    mostrarResultado();
-                    enviarRespostas(respostasResult);
-                }
-            }
-
-            
+                        function proximo() {
+                            const selecionado = document.querySelector("input[name='option']:checked");
+                            if (!selecionado) {
+                                alert("Por favor, selecione uma opção para continuar.");
+                                return;
+                            }
+                            respostasResult.push(parseInt(selecionado.value));
+                            perguntaAtual++;
+                            if (perguntaAtual < perguntas.length) {
+                                exibirPerguntas();
+                            } else {
+                                mostrarResultado();
+                                enviarRespostas(respostasResult);
+                            }
+                        }
 
 
-            exibirPerguntas();
-        </script>
-    </div>
+
+
+                        exibirPerguntas();
+                    </script>
+                </div>
+        </div>
     </div>
 </body>
+
 
 
 </html>

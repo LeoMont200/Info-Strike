@@ -52,7 +52,10 @@ exports.obterRespostas = async (req, res) => {
       },
       arteMarcial: {
         nome: resultados[0].arte_nome,
-        desc: resultados[0].arte_desc, 
+        tipo: resultados[0].arte_tipo,
+        desc: resultados[0].arte_desc,
+        tend: resultados[0].arte_tend,
+        pais: resultados[0].arte_pais,
         r1: resultados[0].arte_r1,
         r2: resultados[0].arte_r2,
         r3: resultados[0].arte_r3,
