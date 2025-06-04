@@ -13,10 +13,7 @@ exports.enviarRespostas = (req, res) => {
 
   console.log('fkEstilo da controller: '+ fkestilo);
   
-  if (typeof fkusuario !== 'number' || isNaN(fkusuario) || isNaN(fkestilo) ||
-    [r1, r2, r3, r4, r5, r6, r7].some(val => typeof val !== 'number' || isNaN(val))) {
-    return res.status(400).json({ error: 'Dados inválidos' });
-  }
+  
 
   respostasModel.enviarRespostas({ fkestilo, fkusuario, r1, r2, r3, r4, r5, r6, r7 })
     .then(() => {

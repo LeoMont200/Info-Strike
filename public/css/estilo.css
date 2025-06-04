@@ -2241,7 +2241,7 @@ input:valid~label {
 .label_user {
   height: 3vh;
   width: 3vw;
-  background-color: rgb(175, 0, 0);
+  background-color: rgb(0, 0, 175);
   border-radius: 20px;
   border-color: black;
   border-style: outset;
@@ -2250,7 +2250,7 @@ input:valid~label {
 .label_arte {
   height: 3vh;
   width: 3vw;
-  background-color: rgb(0, 0, 175);
+  background-color: rgb(175, 0, 0);
   border-radius: 20px;
   border-color: black;
   border-style: outset;
