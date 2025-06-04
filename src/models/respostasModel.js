@@ -1,6 +1,6 @@
 var database = require("../database/config")
 
-exports.enviarRespostas = async (dados) => {
+exports.enviarRespostas = (dados) => {
   var { fkusuario, fkestilo, r1, r2, r3, r4, r5, r6, r7 } = dados;
 
   fkusuario = Number(fkusuario);
@@ -22,8 +22,7 @@ exports.enviarRespostas = async (dados) => {
   return database.executar(instrucaoSql);
 };
 
-
-exports.obterRespostasPorUsuario = async (idusuario) => {
+exports.obterRespostasPorUsuario = (idusuario) => {
   const instrucaoSql = `
     SELECT r.r1 as usuario_r1, r.r2 as usuario_r2, r.r3 as usuario_r3,
      r.r4 as usuario_r4, r.r5 as usuario_r5, r.r6 as usuario_r6, r.r7 as usuario_r7,
